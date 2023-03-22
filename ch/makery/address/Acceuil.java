@@ -48,18 +48,7 @@ public class Acceuil {
     private void initialize() {
     }
 
-    /**
-     * Methode handle appel�e lorsque l'utilisateur appuie sur l'item ajouter .
-     * Elle ouvre une fen�tre de dialogue pour ajouter de nouvelles donn�es d'un �tudiant.
-     */
-    @FXML
-    private void handleNewEtudiant() {
-        Etudiant tempEtudiant = new Etudiant();
-        boolean okClicked = mainApp.showAjouterDialog(tempEtudiant);
-        if (okClicked) {
-            mainApp.getEtudiantData().add(tempEtudiant);
-        }
-    }
+  
 
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > Tous.
