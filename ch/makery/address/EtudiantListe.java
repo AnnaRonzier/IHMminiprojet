@@ -103,7 +103,7 @@ public class EtudiantListe {
             alert.showAndWait();
         }
     }
-
+  
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur le bouton modifier.
      * Elle ouvre une fen�tre de dialogue pour modifier les donn�es d'un �tudiant s�lectionn�.
