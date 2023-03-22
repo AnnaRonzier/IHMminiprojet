@@ -89,7 +89,7 @@
 .button {
     -fx-padding: 5 22 5 22;
     -fx-background-radius: 0;
-    -fx-background-color: #008080;
+    -fx-background-color: #5fb260;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
     -fx-text-fill: white;
@@ -97,7 +97,7 @@
 }
 
 .button:hover {
-    -fx-background-color: #3a3a3a;
+    -fx-background-color: #5fb260;
 }
 
 .button:pressed, .button:default:hover:pressed {
