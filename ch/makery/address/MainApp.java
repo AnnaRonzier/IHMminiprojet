@@ -54,8 +54,9 @@ public class MainApp extends Application {
     public MainApp() {
         // On ajoute quelques donnn�es
         
-        etudiantData.add(new Etudiant("Hanna", "Monster",1998, "M1","GPHY"));
-        etudiantData.add(new Etudiant("Mika�", "Volorovich",1997, "M2","GPHY"));
+        etudiantData.add(new Etudiant("RONZIER", "Anna",2001, "M1","GPHY"));
+        etudiantData.add(new Etudiant("SCHOTT", "Fanny",1997, "M2","GCELL"));
+        etudiantData.add(new Etudiant("TESSIER", "Thomas",2001, "M1","GCELL"));
     }
 
     /**
@@ -227,7 +228,7 @@ public class MainApp extends Application {
             // Charge le fichier fxml et cr�� un nouveau stage pour la fen�tre de dialogue popup.
             FXMLLoader loader = new FXMLLoader();
             System.out.println("t3");
-            loader.setLocation(MainApp.class.getResource("Ajouter.fxml"));
+            loader.setLocation(MainApp.class.getResource("Ajouter2.fxml"));
             System.out.println("te3");
             AnchorPane page = (AnchorPane) loader.load();
 System.out.println("3");
