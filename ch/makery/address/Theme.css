@@ -13,8 +13,8 @@
 
 .table-view {
     -fx-base: #c6c6c6;
-    -fx-control-inner-background: #5fb260;
-    -fx-background-color: #5fb260;
+    -fx-control-inner-background: #c6c6c6;
+    -fx-background-color: #c6c6c6;
     -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;
     -fx-padding: 5;

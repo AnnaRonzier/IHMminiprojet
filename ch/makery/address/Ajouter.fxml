@@ -47,7 +47,7 @@
             <Image url="@../../../ressources/SFA.png" />
          </image>
       </ImageView>
-      <Label layoutX="214.0" layoutY="15.0" text="Ajouter un étudiant" textFill="WHITE" />
+      <Label layoutX="214.0" layoutY="15.0" text="Editer un étudiant" textFill="WHITE" />
       <Icon content="ADD" layoutX="452.0" layoutY="15.0" />
    </children>
 </AnchorPane>
