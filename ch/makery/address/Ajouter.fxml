@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@../../Downloads/GestionEtudiants/src/ch/makery/address/view/Theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.EtudiantEditDialogController">
+<AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@../../Downloads/GestionEtudiants/src/ch/makery/address/view/Theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.Ajouter">
    <children>
       <GridPane layoutX="10.0" layoutY="55.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="55.0">
          <columnConstraints>
