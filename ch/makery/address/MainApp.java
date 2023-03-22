@@ -150,7 +150,7 @@ public class MainApp extends Application {
 
         Acceuil();
 
-        EtudiantListe();
+        showEtudiantListe();
     }
 
     /**
@@ -180,7 +180,7 @@ public class MainApp extends Application {
     /**
      * Affiche la liste des �tudiants dans le root layout.
      */
-    public void EtudiantListe() {
+    public void showEtudiantListe() {
         try {
             // Charge le fichier �tudiant overview.
             FXMLLoader loader = new FXMLLoader();

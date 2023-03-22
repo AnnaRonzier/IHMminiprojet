@@ -55,7 +55,7 @@ public class Acceuil {
     @FXML
     private void handleNewEtudiant() {
         Etudiant tempEtudiant = new Etudiant();
-        boolean okClicked = mainApp.showEtudiantEditDialog(tempEtudiant);
+        boolean okClicked = mainApp.showEtudiantListe(tempEtudiant);
         if (okClicked) {
             mainApp.getEtudiantData().add(tempEtudiant);
         }
