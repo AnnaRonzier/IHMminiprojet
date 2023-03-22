@@ -104,7 +104,7 @@ public class MainApp extends Application {
      */
     public ObservableList<Etudiant> getGPHYData() {
         for (Etudiant p : etudiantData){
-            if(p.getPromotion() == "GPHY"){
+            if(p.getParcours() == "GPHY"){
                 listGPHY.add(p);
             }
         }
@@ -119,7 +119,7 @@ public class MainApp extends Application {
      */
     public ObservableList<Etudiant> getGCELLData() {
         for (Etudiant p : etudiantData){
-            if(p.getPromotion() == "GCELL"){
+            if(p.getParcours() == "GCELL"){
                 listGCELL.add(p);
             }
         }
@@ -134,7 +134,7 @@ public class MainApp extends Application {
      */
     public ObservableList<Etudiant> getECMPSData() {
         for (Etudiant p : etudiantData){
-            if(p.getPromotion() == "ECMPS"){
+            if(p.getParcours() == "ECMPS"){
                 listECMPS.add(p);
             }
         }
