@@ -86,7 +86,7 @@ public class EtudiantListe {
             alert.initOwner(mainApp.getPrimaryStage());
             alert.setTitle("Suppresion");
             alert.setHeaderText("Confirmation de suppression");
-            alert.setContentText("Etes-vous s�r de vouloir supprimer cet �tudiant ?");
+            alert.setContentText("Etes-vous sur de vouloir supprimer cet etudiant ?");
 
             Optional<ButtonType> result = alert.showAndWait();
             if (result.get() == ButtonType.OK) {
