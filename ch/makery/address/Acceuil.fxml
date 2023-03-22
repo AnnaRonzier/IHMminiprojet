@@ -60,7 +60,7 @@
       <Button layoutX="455.0" layoutY="16.0" mnemonicParsing="false" text="Search" />
       <ImageView fitHeight="51.0" fitWidth="64.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Projet_IH/SFA.jpeg" />
+            <Image url="@../../../ressources/SFA.png" />
          </image>
       </ImageView>
    </children>

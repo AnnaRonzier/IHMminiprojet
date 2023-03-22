@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
@@ -161,7 +162,7 @@ public class MainApp extends Application {
             // Charge le root layout venant du fichier fxml.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("Acceuil.fxml"));
-            rootLayout = (BorderPane) loader.load();
+            rootLayout = (Pane) loader.load();
 
             // Affiche la scene contenant le root layout.
             Scene scene = new Scene(rootLayout);
