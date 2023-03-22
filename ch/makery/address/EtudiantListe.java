@@ -113,7 +113,7 @@ public class EtudiantListe {
         Etudiant selectedEtudiant = etudiantTable.getSelectionModel().getSelectedItem();
         if (selectedEtudiant != null) {
             @SuppressWarnings("unused")
-            boolean okClicked = mainApp.showEtudiantListe(selectedEtudiant);
+            boolean okClicked = mainApp.showAjouterDialog(selectedEtudiant);
         } else {
             // Nothing selected.
             Alert alert = new Alert(AlertType.WARNING);
