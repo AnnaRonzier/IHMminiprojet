@@ -148,7 +148,7 @@ public class MainApp extends Application {
         this.primaryStage.getIcons().add(new Image("/ressources/SFA.png"));
 
 
-        Acceuil();
+        initAcceuil();
 
         showEtudiantListe();
     }
@@ -156,7 +156,7 @@ public class MainApp extends Application {
     /**
      * Initialise le root layout.
      */
-    public void Acceuil() {
+    public void initAcceuil() {
         try {
             // Charge le root layout venant du fichier fxml.
             FXMLLoader loader = new FXMLLoader();
