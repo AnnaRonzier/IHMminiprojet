@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="500.0" prefWidth="800.0" stylesheets="@../../../../GestionEtudiants/src/ch/makery/address/view/Theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.view.RootLayoutController">
+   <top>
+      <MenuBar fx:id="menuBar" prefHeight="59.0" prefWidth="800.0" style="-fx-background-color: #5fb260;" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="parcoursMenu" mnemonicParsing="false" text="Parcours">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#handleListeTous" text="Tous" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleListeL3" text="L3" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleListeM1" text="M1" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleListeM2" text="M2" />
+            </items>
+          </Menu>
+            <Menu fx:id="promotionMenu" mnemonicParsing="false" text="Promotion">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#handleNewEtudiant" text="Ajouter" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

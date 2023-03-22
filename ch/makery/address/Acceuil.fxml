@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Icon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
@@ -58,6 +59,7 @@
          </image>
       </ImageView>
       <Button layoutX="455.0" layoutY="16.0" mnemonicParsing="false" text="Search" />
+      <Icon content="SEARCH" layoutX="529.0" layoutY="15.0" prefHeight="37.0" prefWidth="40.0" />
       <ImageView fitHeight="51.0" fitWidth="64.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../ressources/SFA.png" />
