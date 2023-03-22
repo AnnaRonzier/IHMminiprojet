@@ -26,9 +26,9 @@
       </AnchorPane>
       <ButtonBar layoutX="430.0" layoutY="388.0" prefHeight="37.0" prefWidth="328.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="388.0">
         <buttons>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleEditEtudiant" prefHeight="27.0" prefWidth="241.0" text="Ajouter" />
-            <Button alignment="CENTER" minWidth="0.0" mnemonicParsing="false" onAction="#handleDeleteEtudiant" prefHeight="27.0" text="Modifier" />
-            <Button alignment="CENTER" layoutX="147.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleDeleteEtudiant" text="Effacer" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleEditEtudiant" prefHeight="27.0" prefWidth="241.0" stylesheets="@Theme.css" text="Ajouter" />
+            <Button alignment="CENTER" minWidth="0.0" mnemonicParsing="false" onAction="#handleDeleteEtudiant" prefHeight="27.0" stylesheets="@Theme.css" text="Modifier" />
+            <Button alignment="CENTER" layoutX="147.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleDeleteEtudiant" stylesheets="@Theme.css" text="Effacer" />
         </buttons>
       </ButtonBar>
    </children>
