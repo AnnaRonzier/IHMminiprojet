@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane prefHeight="500.0" prefWidth="800.0" stylesheets="@Theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.Acceuil">
@@ -19,10 +21,10 @@
           </Menu>
             <Menu fx:id="promotionMenu" mnemonicParsing="false" text="Promotion">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#handleNewEtudiant" text="Tous" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleNewEtudiant" text="GPHY" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleNewEtudiant" text="GCELL" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleNewEtudiant" text="ECMPS" />
+                <MenuItem mnemonicParsing="false" onAction="#handleListeTous" text="Tous" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleListeGPHY" text="GPHY" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleListeGCELL" text="GCELL" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleListeECMPS" text="ECMPS" />
               </items>
             </Menu>
         </menus>
@@ -31,4 +33,14 @@
          </padding>
       </MenuBar>
    </top>
+   <left>
+      <ImageView fitHeight="54.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="730.0" top="-500.0" />
+         </BorderPane.margin>
+         <image>
+            <Image url="@../../../ressources/SFA.png" />
+         </image>
+      </ImageView>
+   </left>
 </BorderPane>
