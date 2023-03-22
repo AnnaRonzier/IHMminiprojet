@@ -67,7 +67,7 @@ public class Acceuil {
      */
     @FXML
     private void handleListeTous() {
-        //mainApp.changeData(mainApp.getEtudiantData());
+        mainApp.changeData(mainApp.getEtudiantData());
     }
 
     /**
@@ -76,7 +76,7 @@ public class Acceuil {
      */
     @FXML
     private void handleListeM1() {
-        //mainApp.changeData(mainApp.getM1Data());
+        mainApp.changeData(mainApp.getM1Data());
     }
 
     /**
@@ -85,7 +85,7 @@ public class Acceuil {
      */
     @FXML
     private void handleListeM2() {
-        //mainApp.changeData(mainApp.getM2Data());
+        mainApp.changeData(mainApp.getM2Data());
     }
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > GPHY.
@@ -93,7 +93,7 @@ public class Acceuil {
      */
     @FXML
     private void handleListeGPHY() {
-        //mainApp.changeData(mainApp.getGPHYData());
+        mainApp.changeData(mainApp.getGPHYData());
     }
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > GCELL.
@@ -101,7 +101,7 @@ public class Acceuil {
      */
     @FXML
     private void handleListeGCELL() {
-        //mainApp.changeData(mainApp.getGCELLData());
+        mainApp.changeData(mainApp.getGCELLData());
     }
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > ECMPS.
@@ -109,7 +109,7 @@ public class Acceuil {
      */
     @FXML
     private void handleListeECMPS() {
-        //mainApp.changeData(mainApp.getECMPSData());
+        mainApp.changeData(mainApp.getECMPSData());
     }
 }
 
