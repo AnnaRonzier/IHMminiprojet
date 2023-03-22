@@ -12,8 +12,12 @@
           <Menu fx:id="parcoursMenu" mnemonicParsing="false" text="Parcours">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleListeTous" text="Tous" />
+<<<<<<< HEAD
+=======
+                 <MenuItem mnemonicParsing="false" onAction="#handleListeL3" text="L3" />
+>>>>>>> 7315f294fd3b51d31e9c20ae952868964d146bbd
                   <MenuItem mnemonicParsing="false" onAction="#handleListeM1" text="M1" />
-                  <MenuItem mnemonicParsing="false" onAction="#handleListeM2" text="M2" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleListeM2" text="M2" />  
             </items>
           </Menu>
             <Menu fx:id="promotionMenu" mnemonicParsing="false" text="Promotion">
