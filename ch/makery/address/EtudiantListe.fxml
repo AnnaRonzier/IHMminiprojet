@@ -10,7 +10,7 @@
    <children>
       <AnchorPane prefHeight="350.0" prefWidth="800.0">
          <children>
-            <TableView fx:id="etudiantTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <TableView fx:id="etudiantTable" stylesheets="@Theme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                <columns>
                   <TableColumn fx:id="nomColumn" prefWidth="138.00701427459717" text="Nom" />
                   <TableColumn fx:id="prenomColumn" prefWidth="135.34149169921875" text="Prénom" />
