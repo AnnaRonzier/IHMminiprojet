@@ -233,7 +233,7 @@ public class MainApp extends Application {
 System.out.println("3");
             // Cr�� la fen�tre de dialogue Stage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Etudiant");
+            dialogStage.setTitle("Editer Etudiant");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
