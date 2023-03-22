@@ -182,12 +182,12 @@ public class MainApp extends Application {
      */
     public void showEtudiantListe() {
         try {
-            // Charge le fichier �tudiant overview.
+            // Charge le fichier �tudiant liste.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("EtudiantListe.fxml"));
             AnchorPane etudiantListe = (AnchorPane) loader.load();
 
-            // Set etudiant overview au centre du root layout.
+            // Set etudiant liste au centre du root layout.
             rootLayout.setCenter(etudiantListe);
 
             // Donne � l'application main l'acc�s au controller.
