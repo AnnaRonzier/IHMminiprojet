@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@Theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.Ajouter">
    <children>
@@ -38,7 +37,5 @@
       </GridPane>
       <Button layoutX="335.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleOk" text="OK" />
       <Button layoutX="406.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="27.0" prefWidth="92.0" text="Annuler" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5fb260" height="48.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="500.0" />
-      <Label layoutX="214.0" layoutY="15.0" text="Editer un étudiant" textFill="WHITE" />
    </children>
 </AnchorPane>
