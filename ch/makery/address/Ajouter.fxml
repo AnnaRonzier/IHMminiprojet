@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@../../Downloads/GestionEtudiants/src/ch/makery/address/view/Theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.Ajouter">
+<AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@Theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.Ajouter">
    <children>
       <GridPane layoutX="10.0" layoutY="55.0" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="55.0">
          <columnConstraints>
@@ -44,7 +44,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5fb260" height="48.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" width="500.0" />
       <ImageView fitHeight="39.0" fitWidth="51.0" layoutX="10.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Downloads/xLogos-SFA-1-300x271.jpg.pagespeed.ic.3QkRN5CKVc.jpg" />
+            <Image url="@../../../ressources/SFA.png" />
          </image>
       </ImageView>
       <Label layoutX="214.0" layoutY="15.0" text="Ajouter un étudiant" textFill="WHITE" />
