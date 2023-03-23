@@ -146,7 +146,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Gestion des Etudiants");
+        this.primaryStage.setTitle("Gestion des Etudiants IDLS");
         this.primaryStage.getIcons().add(new Image("/ressources/SFA.png"));
 
 
