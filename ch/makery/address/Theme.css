@@ -34,25 +34,25 @@
 .table-view .column-header .label {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: #008080;
+    -fx-text-fill: #5fb260;
     -fx-alignment: center;
     -fx-opacity: 1;
 }
 
 .table-view:focused .table-row-cell:filled:focused:selected {
-    -fx-background-color: #008080;
+    -fx-background-color: #5fb260;
 }
 
 .table-view:row-selection .table-row-cell:filled:focused:hover {
-    -fx-background-color: #008080;
+    -fx-background-color: #5fb260;
 }
 
 .table-view:row-selection .table-row-cell:filled:hover {
-    -fx-background-color: #008080;
+    -fx-background-color: #5fb260;
 }
 
 .menu-bar {
-    -fx-background-color: #008080;
+    -fx-background-color: #5fb260;
 }
 
 .menu:hover{

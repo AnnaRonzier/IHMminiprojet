@@ -111,28 +111,28 @@ public class Ajouter {
 
         
         if (prenomField.getText() == null || prenomField.getText().length() == 0 || (prenomField.getText().toUpperCase().matches("[A-Z]+") == false) || prenomField.getText().toUpperCase().matches(".*\\d+.*")) {
-            errorMessage += "Pr�nom non valide!\n Il ne doit pas contenir d'accent ou de caract�re sp�ciaux \n ";
+            errorMessage += "Prenom non valide!\n Il ne doit pas contenir d'accent ou de caractere speciaux \n ";
         }
         if (nomField.getText() == null || nomField.getText().length() == 0 || (nomField.getText().toUpperCase().matches("[A-Z]+") == false) || nomField.getText().toUpperCase().matches(".*\\d+.*")) {
-            errorMessage += "Nom non valide!\n Il ne doit pas contenir d'accent ou de caract�re sp�ciaux \n";
+            errorMessage += "Nom non valide!\n Il ne doit pas contenir d'accent ou de caractere speciaux \n";
         }
 
         if (anneeDeNaissanceField.getText() == null || anneeDeNaissanceField.getText().length() == 0 || anneeDeNaissanceField.getText().length() < 4 || anneeDeNaissanceField.getText().length() > 4) {
-            errorMessage += "Ann�e de naissance non valide!\n Il doit �tre un entier � 4 chiffres \n";
+            errorMessage += "Annee de naissance non valide!\n Il doit etre un entier a 4 chiffres \n";
         } else {
             // Essaye de changer l'ann�e de naissance en un entier.
             try {
                 Integer.parseInt(anneeDeNaissanceField.getText());
             } catch (NumberFormatException e) {
-                errorMessage += "Annee de Naissance non valide (il doit �tre un entier � 4 chiffres) !\n";
+                errorMessage += "Annee de Naissance non valide (il doit etre un entier a 4 chiffres) !\n";
             }
         }
 
         if (promotionField.getText() == null || promotionField.getText().length() == 0 || (promotionField.getText().matches("M1") == false && promotionField.getText().matches("M2") == false)) {
-            errorMessage += "Promotion non valide!\n La promotion doit �tre M1 ou M2 \n";
+            errorMessage += "Promotion non valide!\n La promotion doit etre M1 ou M2 \n";
         }
-        if (parcoursField.getText() == null || parcoursField.getText().length() == 0 || (parcoursField.getText().matches("GPHY") == false && promotionField.getText().matches("GCELL") == false && promotionField.getText().matches("ECPMPS") == false)) {
-            errorMessage += "Promotion non valide!\n La promotion doit �tre GPHY, GCELL ou ECMPS \n";
+        if (parcoursField.getText() == null || parcoursField.getText().length() == 0 || (parcoursField.getText().matches("GPHY") == false && parcoursField.getText().matches("GCELL") == false && parcoursField.getText().matches("ECPMPS") == false)) {
+            errorMessage += "Promotion non valide!\n La promotion doit etre GPHY, GCELL ou ECMPS \n";
         }
 
         if (errorMessage.length() == 0) {

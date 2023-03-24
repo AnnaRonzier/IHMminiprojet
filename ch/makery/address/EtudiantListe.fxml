@@ -10,7 +10,7 @@
    <children>
       <AnchorPane prefHeight="350.0" prefWidth="800.0">
          <children>
-            <TableView fx:id="etudiantTable" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+            <TableView fx:id="etudiantTable" stylesheets="@Theme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                <columns>
                   <TableColumn fx:id="nomColumn" prefWidth="138.00701427459717" text="Nom" />
                   <TableColumn fx:id="prenomColumn" prefWidth="135.34149169921875" text="Prénom" />
@@ -26,8 +26,8 @@
       </AnchorPane>
       <ButtonBar layoutX="430.0" layoutY="388.0" prefHeight="37.0" prefWidth="328.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="430.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="388.0">
         <buttons>
-            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleNewEtudiant" prefHeight="27.0" prefWidth="241.0" stylesheets="@Theme.css" text="Ajouter" />
-            <Button alignment="CENTER" minWidth="0.0" mnemonicParsing="false" onAction="#handleEditEtudiant" prefHeight="27.0" stylesheets="@Theme.css" text="Modifier" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleNewEtudiant" stylesheets="@Theme.css" text="Ajouter" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleEditEtudiant" stylesheets="@Theme.css" text="Modifier" />
             <Button alignment="CENTER" layoutX="147.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleDeleteEtudiant" stylesheets="@Theme.css" text="Effacer" />
         </buttons>
       </ButtonBar>

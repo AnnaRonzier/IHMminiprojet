@@ -63,7 +63,7 @@ public class EtudiantListe {
         parcoursColumn.setCellValueFactory(
                 cellData -> cellData.getValue().parcoursProperty());
     }
-  /**
+    /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item ajouter .
      * Elle ouvre une fen�tre de dialogue pour ajouter de nouvelles donn�es d'un �tudiant.
      */
@@ -71,6 +71,7 @@ public class EtudiantListe {
     private void handleNewEtudiant() {
         Etudiant tempEtudiant = new Etudiant();
         boolean okClicked = mainApp.showAjouterDialog(tempEtudiant);
+        System.out.println("/");
         if (okClicked) {
             mainApp.getEtudiantData().add(tempEtudiant);
         }

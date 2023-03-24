@@ -54,8 +54,9 @@ public class MainApp extends Application {
     public MainApp() {
         // On ajoute quelques donnn�es
         
-        etudiantData.add(new Etudiant("Hanna", "Monster",1998, "M1","GPHY"));
-        etudiantData.add(new Etudiant("Mika�", "Volorovich",1997, "M2","GPHY"));
+        etudiantData.add(new Etudiant("RONZIER", "Anna",2001, "M1","GPHY"));
+        etudiantData.add(new Etudiant("SCHOTT", "Fanny",1997, "M2","GCELL"));
+        etudiantData.add(new Etudiant("TESSIER", "Thomas",2001, "M1","GCELL"));
     }
 
     /**
@@ -145,7 +146,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        this.primaryStage.setTitle("Gestion des Etudiants");
+        this.primaryStage.setTitle("Gestion des Etudiants IDLS");
         this.primaryStage.getIcons().add(new Image("/ressources/SFA.png"));
 
 
@@ -221,28 +222,32 @@ public class MainApp extends Application {
      * @return true si l'utilisateur clique sur OK sinon il retourne false.
      */
     public boolean showAjouterDialog(Etudiant etudiant) {
+        System.out.println("1");
         try {
+            System.out.println("2");
             // Charge le fichier fxml et cr�� un nouveau stage pour la fen�tre de dialogue popup.
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("Ajouter.fxml"));
+            System.out.println("t3");
+            loader.setLocation(MainApp.class.getResource("Ajouter2.fxml"));
+            System.out.println("te3");
             AnchorPane page = (AnchorPane) loader.load();
-
+System.out.println("3");
             // Cr�� la fen�tre de dialogue Stage.
             Stage dialogStage = new Stage();
-            dialogStage.setTitle("Edit Etudiant");
+            dialogStage.setTitle("Editer Etudiant");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
-
+System.out.println("4");
             // Set l'etudiant dans le controller.
             Ajouter controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setEtudiant(etudiant);
-
+System.out.println("5");
             // Affiche la fen�tre de dialogue et attends jusqu'� ce que l'utilisateur la ferme.
             dialogStage.showAndWait();
-
+   
             return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
