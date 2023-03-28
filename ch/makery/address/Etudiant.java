@@ -57,8 +57,10 @@ public class Etudiant {
      * @param prenom
      */
     public void setPrenom(String prenom) {
-        this.prenom.set(prenom);
+    this.prenom.set(prenom);
+   
     }
+
 
     /**
      * Getter de la propri�t� du pr�nom
