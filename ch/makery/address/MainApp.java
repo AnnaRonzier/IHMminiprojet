@@ -65,7 +65,8 @@ public class MainApp extends Application {
     e.printStackTrace();
 }
         // On recupère les données de la base de donnée
-       String url = "jdbc:sqlite:/path/to/your/database.db";
+       String url = "jdbc:sqlite:src/main/resources/database.db";
+
         List<Etudiant> etudiantData = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(url);
