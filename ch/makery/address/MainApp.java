@@ -30,7 +30,7 @@ public class MainApp extends Application {
 
     EtudiantListe controllerPO;
     /**
-     * Les donn�es sont stock�es dans diff�rentes listes
+     * Les donnees sont stockees dans differentes listes
      */
     //liste principale
     private ObservableList<Etudiant> etudiantData = FXCollections.observableArrayList();
@@ -69,9 +69,9 @@ public class MainApp extends Application {
 
 
     /**
-     * M�thode qui filtre les �tudiants de la promotion ,
+     * M�thode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
-     * et retourne les donn�es en une liste observable
+     * et retourne les donnees en une liste observable
      * @return listM1
      */
     public ObservableList<Etudiant> getM1Data() {
@@ -84,9 +84,9 @@ public class MainApp extends Application {
     }
 
     /**
-     * M�thode qui filtre les �tudiants de la promotion ,
+     * M�thode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
-     * et retourne les donn�es en une liste observable
+     * et retourne les donnees en une liste observable
      * @return listM2
      */
     public ObservableList<Etudiant> getM2Data() {
@@ -98,9 +98,9 @@ public class MainApp extends Application {
         return listM2;
     }
   /**
-     * M�thode qui filtre les �tudiants de la promotion ,
+     * M�thode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
-     * et retourne les donn�es en une liste observable
+     * et retourne les donnees en une liste observable
      * @return listGPHY
      */
     public ObservableList<Etudiant> getGPHYData() {
@@ -113,9 +113,9 @@ public class MainApp extends Application {
     }
 
     /**
-     * M�thode qui filtre les �tudiants de la promotion ,
+     * M�thode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
-     * et retourne les donn�es en une liste observable
+     * et retourne les donnees en une liste observable
      * @return listGCELL
      */
     public ObservableList<Etudiant> getGCELLData() {
@@ -128,9 +128,9 @@ public class MainApp extends Application {
     }
 
     /**
-     * M�thode qui filtre les �tudiants de la promotion ,
+     * M�thode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
-     * et retourne les donn�es en une liste observable
+     * et retourne les donnees en une liste observable
      * @return listECMPS
      */
     public ObservableList<Etudiant> getECMPSData() {
