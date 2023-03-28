@@ -1,6 +1,6 @@
 package ch.makery.address;
 
-
+import java.sql.*;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
  * @author 
  */
 public class Etudiant {
-
+    private final IntegerProperty identifiant;
     private final StringProperty parcours;
     private final StringProperty prenom;
     private final StringProperty nom;
@@ -24,7 +24,7 @@ public class Etudiant {
      * Constructeur par d�faut.
      */
     public Etudiant() {
-        this(null, null, 0, null, null);
+        this(0, null, null, 0, null, null);
     }
 
     /**
@@ -36,7 +36,8 @@ public class Etudiant {
      * @param anneeDeNaissance
      * @param promotion
      */
-    public Etudiant(String prenom, String nom, Integer anneeDeNaissance, String promotion, String parcours) {
+    public Etudiant(int identifiant, String prenom, String nom, Integer anneeDeNaissance, String promotion, String parcours) {
+        this.identifiant = new SimpleIntegerProperty(identifiant);
         this.prenom = new SimpleStringProperty(prenom);
         this.nom = new SimpleStringProperty(nom);
         this.anneeDeNaissance = new SimpleIntegerProperty(anneeDeNaissance);
@@ -57,8 +58,21 @@ public class Etudiant {
      * @param prenom
      */
     public void setPrenom(String prenom) {
-        this.prenom.set(prenom);
+    this.prenom.set(prenom);
+ String url = "jdbc:sqlite:/path/to/your/database.db";
+    String sql = "UPDATE Etudiants SET prenom = ? WHERE id = ?";
+    try (Connection conn = DriverManager.getConnection(url);
+         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        pstmt.setString(1, prenom);
+        pstmt.setInt(2, identifiant.get());
+        pstmt.executeUpdate();
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
     }
+    }
+
+
+
 
     /**
      * Getter de la propri�t� du pr�nom

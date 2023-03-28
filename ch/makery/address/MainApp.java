@@ -69,7 +69,7 @@ public class MainApp extends Application {
                 String promotion = rs.getString("promotion");
                 String parcours = rs.getString("parcours");
 
-                Etudiant etudiant = new Etudiant(nom, prenom,date, promotion, parcours);
+                Etudiant etudiant = new Etudiant(null, nom, prenom,date, promotion, parcours);
                 etudiantData.add(etudiant);
             }
 
