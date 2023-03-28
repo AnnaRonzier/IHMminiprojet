@@ -1,6 +1,6 @@
 package ch.makery.address;
 
-import java.sql.*;
+
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -13,7 +13,7 @@ import javafx.beans.property.StringProperty;
  * @author 
  */
 public class Etudiant {
-        
+
     private final StringProperty parcours;
     private final StringProperty prenom;
     private final StringProperty nom;
@@ -23,14 +23,9 @@ public class Etudiant {
     /**
      * Constructeur par d�faut.
      */
-  public Etudiant(String nom, String prenom, int anneeDeNaissance, String promotion, String parcours) {
-    this.nom = new SimpleStringProperty(nom);
-    this.prenom = new SimpleStringProperty(prenom);
-    this.anneeDeNaissance = new SimpleIntegerProperty(anneeDeNaissance);
-    this.promotion = new SimpleStringProperty(promotion);
-    this.parcours = new SimpleStringProperty(parcours);
-}
-
+    public Etudiant() {
+        this(null, null, 0, null, null);
+    }
 
     /**
      * Constructeur avec param�tres.
@@ -63,10 +58,8 @@ public class Etudiant {
      */
     public void setPrenom(String prenom) {
     this.prenom.set(prenom);
-
+   
     }
-
-
 
 
     /**
