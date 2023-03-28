@@ -1,4 +1,5 @@
 package ch.makery.address;
+import java.sql.*;
 import java.io.IOException;
 import ch.makery.address.Etudiant;
 import ch.makery.address.Ajouter;
@@ -44,7 +45,6 @@ public class MainApp extends Application {
     private ObservableList<Etudiant> listGCELL = FXCollections.observableArrayList();
     //Liste des ECMPS
     private ObservableList<Etudiant> listECMPS = FXCollections.observableArrayList();
-
 
 
 
@@ -211,6 +211,16 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
+         String url = "jdbc:sqlite:/path/to/your/database.db";
+
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement()) {
+            // exécuter le script de création de la table
+            stmt.execute("CREATE TABLE Etudiants (id INTEGER PRIMARY KEY, nom TEXT, prenom TEXT, promotion TEXT, parcours TEXT)");
+            System.out.println("Table Etudiants créée avec succès !");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     /**
