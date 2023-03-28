@@ -69,7 +69,7 @@ public class MainApp extends Application {
                 String promotion = rs.getString("promotion");
                 String parcours = rs.getString("parcours");
 
-                Etudiant etudiant = new Etudiant(null, nom, prenom,date, promotion, parcours);
+                Etudiant etudiant = new Etudiant(nom, prenom,date, promotion, parcours);
                 etudiantData.add(etudiant);
             }
 
@@ -254,9 +254,12 @@ public class MainApp extends Application {
      * @return true si l'utilisateur clique sur OK sinon il retourne false.
      */
     public boolean showAjouterDialog(Etudiant etudiant) {
+
         try {
+   
             // Charge le fichier fxml et cr�� un nouveau stage pour la fen�tre de dialogue popup.
             FXMLLoader loader = new FXMLLoader();
+    
             loader.setLocation(MainApp.class.getResource("Ajouter2.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             // Cr�� la fen�tre de dialogue Stage.
