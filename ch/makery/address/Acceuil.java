@@ -1,6 +1,4 @@
 package ch.makery.address;
-
-
 import ch.makery.address.MainApp;
 import ch.makery.address.Etudiant;
 import javafx.fxml.FXML;
