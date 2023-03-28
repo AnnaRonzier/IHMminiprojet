@@ -1,5 +1,6 @@
 package ch.makery.address;
 import java.sql.*;
+import java.util.List;
 import java.io.IOException;
 import ch.makery.address.Etudiant;
 import ch.makery.address.Ajouter;
@@ -16,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+import java.util.ArrayList;
 
 /**
  * Classe Main application
@@ -52,12 +54,32 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
-        // On ajoute quelques donnn�es
-        
-        etudiantData.add(new Etudiant("RONZIER", "Anna",2001, "M1","GPHY"));
-        etudiantData.add(new Etudiant("SCHOTT", "Fanny",1997, "M2","GCELL"));
-        etudiantData.add(new Etudiant("TESSIER", "Thomas",2001, "M1","GCELL"));
+        // On recupère les données de la base de donnée
+       String url = "jdbc:sqlite:/path/to/your/database.db";
+        List<Etudiant> etudiantData = new ArrayList<>();
+
+        try (Connection conn = DriverManager.getConnection(url);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM Etudiants")) {
+
+            while (rs.next()) {
+                String nom = rs.getString("nom");
+                String prenom = rs.getString("prenom");
+                int date = rs.getInt("date");
+                String promotion = rs.getString("promotion");
+                String parcours = rs.getString("parcours");
+
+                Etudiant etudiant = new Etudiant(nom, prenom,date, promotion, parcours);
+                etudiantData.add(etudiant);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+       
     }
+    
 
     /**
      * M�thode qui retourne les donn�es du tableau en une liste observable
@@ -232,16 +254,11 @@ public class MainApp extends Application {
      * @return true si l'utilisateur clique sur OK sinon il retourne false.
      */
     public boolean showAjouterDialog(Etudiant etudiant) {
-        System.out.println("1");
         try {
-            System.out.println("2");
             // Charge le fichier fxml et cr�� un nouveau stage pour la fen�tre de dialogue popup.
             FXMLLoader loader = new FXMLLoader();
-            System.out.println("t3");
             loader.setLocation(MainApp.class.getResource("Ajouter2.fxml"));
-            System.out.println("te3");
             AnchorPane page = (AnchorPane) loader.load();
-System.out.println("3");
             // Cr�� la fen�tre de dialogue Stage.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Editer Etudiant");
@@ -249,12 +266,10 @@ System.out.println("3");
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
-System.out.println("4");
             // Set l'etudiant dans le controller.
             Ajouter controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setEtudiant(etudiant);
-System.out.println("5");
             // Affiche la fen�tre de dialogue et attends jusqu'� ce que l'utilisateur la ferme.
             dialogStage.showAndWait();
    
