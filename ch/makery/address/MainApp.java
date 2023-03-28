@@ -1,5 +1,8 @@
 package ch.makery.address;
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 import java.io.IOException;
 import ch.makery.address.Etudiant;
@@ -54,6 +57,7 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
+    
         // On recupère les données de la base de donnée
        String url = "jdbc:sqlite:/path/to/your/database.db";
         List<Etudiant> etudiantData = new ArrayList<>();
