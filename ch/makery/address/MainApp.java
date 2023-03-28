@@ -21,6 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
+import org.sqlite.JDBC;
 
 /**
  * Classe Main application
@@ -57,8 +58,15 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
+      try {
+    Class.forName("org.sqlite.JDBC");
+} catch (ClassNotFoundException e) {
+    System.err.println("Le pilote JDBC SQLite n'a pas été trouvé.");
+    e.printStackTrace();
+}
         // On recupère les données de la base de donnée
-       String url = "jdbc:sqlite:/path/to/your/database.db";
+       String url = "jdbc:sqlite:src/main/resources/database.db";
+
         List<Etudiant> etudiantData = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(url);
