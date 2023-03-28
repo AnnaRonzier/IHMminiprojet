@@ -57,7 +57,6 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
-    
         // On recupère les données de la base de donnée
        String url = "jdbc:sqlite:/path/to/your/database.db";
         List<Etudiant> etudiantData = new ArrayList<>();
