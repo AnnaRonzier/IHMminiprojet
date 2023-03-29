@@ -253,9 +253,7 @@ public class MainApp extends Application {
           etudiantData.add(nouvelEtudiant);
      
         }
-        for (Etudiant etudiant : etudiantData) {
-    System.out.println(etudiant.getNom() + " " + etudiant.getPrenom());
-}
+         showEtudiantListe();
 
         
             // Exécuter la requête SQL et obtenir un objet
