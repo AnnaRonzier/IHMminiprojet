@@ -45,7 +45,7 @@ public class Etudiant {
     }
 
     /**
-     * Getter du pr�nom de l'�tudiant
+     * Getter du prenom de l'etudiant
      * @return String prenom
      */
     public String getPrenom() {
@@ -53,7 +53,7 @@ public class Etudiant {
     }
 
     /**
-     * Setter du prenom de l'�tudiant
+     * Setter du prenom de l'etudiant
      * @param prenom
      */
     public void setPrenom(String prenom) {
@@ -63,7 +63,7 @@ public class Etudiant {
 
 
     /**
-     * Getter de la propri�t� du pr�nom
+     * Getter de la propriete du prenom
      * @return StringProperty prenom
      */
     public StringProperty prenomProperty() {

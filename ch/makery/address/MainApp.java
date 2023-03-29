@@ -21,6 +21,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 
 
 
@@ -254,6 +258,9 @@ public class MainApp extends Application {
                 System.out.println(ex.getMessage());
             }
         }
+    }
+      public static void MainApp(String[] args) {
+        connect();
     }
     /**
      * Ouvre une fen�tre de dialogue pour �diter les donn�es pour un �tudiant s�lectionner
