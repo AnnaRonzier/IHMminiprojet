@@ -21,6 +21,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 
 
 
@@ -59,7 +63,9 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
+
        connect();
+
     }
     
 
@@ -260,7 +266,7 @@ public class MainApp extends Application {
             }
         }
     }
-  
+
     /**
      * Ouvre une fen�tre de dialogue pour �diter les donn�es pour un �tudiant s�lectionner
      * Si l'utilisateur clique sur OK, le changement sera sauvegarder dans l'objet �tudiant fourni
