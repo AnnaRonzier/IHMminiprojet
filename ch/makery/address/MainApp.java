@@ -59,7 +59,7 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
-
+    
     }
     
 
@@ -215,18 +215,46 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
-         String url = "jdbc:sqlite:/path/to/your/database.db";
+          
+        connect();
+    }
+ public static void connect() {
+     Connection conn = null;
+      Statement stmt = null;
+      ResultSet rs = null;
+        
+        try {
+            // db parameters
+            String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
+            // create a connection to the database
+            conn = DriverManager.getConnection(url);
+            
+            System.out.println("Connection to SQLite has been established.");
+             // Créer une instruction SQL pour sélectionner les colonnes de la table Etudiant
+         stmt = conn.createStatement();
+         rs = stmt.executeQuery("SELECT Nom, Prenom, Annee_de_Naissance, Parcours, Promotion FROM Etudiant");
 
-        try (Connection conn = DriverManager.getConnection(url);
-             Statement stmt = conn.createStatement()) {
-            // exécuter le script de création de la table
-            stmt.execute("CREATE TABLE Etudiants (id INTEGER PRIMARY KEY, nom TEXT, prenom TEXT, promotion TEXT, parcours TEXT)");
-            System.out.println("Table Etudiants créée avec succès !");
+         // Parcourir les résultats de la requête
+        while (rs.next()) {
+            String nom = rs.getString("Nom");
+            String prenom = rs.getString("Prenom");
+            int anneeNaissance = rs.getInt("Annee_de_Naissance");
+            String parcours = rs.getString("Parcours");
+            String promotion = rs.getString("Promotion");
+        }
+            // Exécuter la requête SQL et obtenir un objet
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
     }
-
     /**
      * Ouvre une fen�tre de dialogue pour �diter les donn�es pour un �tudiant s�lectionner
      * Si l'utilisateur clique sur OK, le changement sera sauvegarder dans l'objet �tudiant fourni
