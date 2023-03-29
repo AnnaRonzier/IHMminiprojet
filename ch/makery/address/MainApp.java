@@ -1,5 +1,8 @@
 package ch.makery.address;
 import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 import java.io.IOException;
 import ch.makery.address.Etudiant;
@@ -18,6 +21,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
 import java.util.ArrayList;
+
 
 /**
  * Classe Main application
@@ -54,33 +58,7 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
-    
-        // On recupère les données de la base de donnée
-       String url = "jdbc:sqlite:ressources/mydatabase.db";
 
-
-        List<Etudiant> etudiantData = new ArrayList<>();
-
-        try (Connection conn = DriverManager.getConnection(url);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM Etudiants")) {
-
-            while (rs.next()) {
-                String nom = rs.getString("nom");
-                String prenom = rs.getString("prenom");
-                int date = rs.getInt("date");
-                String promotion = rs.getString("promotion");
-                String parcours = rs.getString("parcours");
-
-                Etudiant etudiant = new Etudiant(nom, prenom,date, promotion, parcours);
-                etudiantData.add(etudiant);
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-
-       
     }
     
 
