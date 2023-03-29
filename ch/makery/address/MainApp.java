@@ -239,17 +239,17 @@ public class MainApp extends Application {
             System.out.println("Connection to SQLite has been established.");
              // Créer une instruction SQL pour sélectionner les colonnes de la table Etudiant
          stmt = conn.createStatement();
-         rs = stmt.executeQuery("SELECT Nom, Prenom, Annee_de_Naissance, Parcours, Promotion FROM Etudiant");
+         rs = stmt.executeQuery("SELECT Nom, Prenom, Naissance, Parcours, Promotion FROM Etudiant");
 
          // Parcourir les résultats de la requête
         while (rs.next()) {
             String nom = rs.getString("Nom");
             String prenom = rs.getString("Prenom");
-            int anneeNaissance = rs.getInt("Annee_de_Naissance");
+            int naissance = rs.getInt("Naissance");
             String parcours = rs.getString("Parcours");
             String promotion = rs.getString("Promotion");
             // Créer un nouvel étudiant avec les informations récupérées
-        Etudiant nouvelEtudiant = new Etudiant(nom, prenom, anneeNaissance, parcours, promotion);
+        Etudiant nouvelEtudiant = new Etudiant(nom, prenom, naissance, parcours, promotion);
           etudiantData.add(nouvelEtudiant);
      
         }
