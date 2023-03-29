@@ -1,7 +1,7 @@
 package ch.makery.address;
 
  
-
+import java.sql.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -81,17 +81,45 @@ public class Ajouter {
      */
     @FXML
     private void handleOk() {
-        if (isInputValid()) {
-            etudiant.setPrenom(prenomField.getText());
-            etudiant.setNom(nomField.getText());
-            etudiant.setAnneeDeNaissance(Integer.parseInt(anneeDeNaissanceField.getText()));
-            etudiant.setPromotion(promotionField.getText());
-            etudiant.setParcours(parcoursField.getText());
+    Connection conn = null;
+    PreparedStatement stmt = null;
 
-            okClicked = true;
-            dialogStage.close();
+    try {
+        // Établir la connexion à la base de données SQLite
+        String url = "jdbc:sqlite:/path/to/your/database.db";
+        conn = DriverManager.getConnection(url);
+
+        // Préparer l'instruction SQL pour insérer les données de l'étudiant
+        String sql = "INSERT INTO etudiant (prenom, nom, annee_naissance, promotion, parcours) VALUES (?, ?, ?, ?, ?)";
+        stmt = conn.prepareStatement(sql);
+
+        // Ajouter les paramètres de l'instruction SQL avec les données de l'étudiant
+        stmt.setString(1, etudiant.getPrenom());
+        stmt.setString(2, etudiant.getNom());
+        stmt.setInt(3, etudiant.getAnneeDeNaissance());
+        stmt.setString(4, etudiant.getPromotion());
+        stmt.setString(5, etudiant.getParcours());
+
+        // Exécuter l'instruction SQL
+        stmt.executeUpdate();
+
+        System.out.println("Les données de l'étudiant ont été ajoutées à la base de données.");
+    } catch (SQLException e) {
+        System.out.println(e.getMessage());
+    } finally {
+        try {
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
     }
+}
+
 
     /**
      * M�thode appel�e lorsque l'utilisateur clique sur Cancel.

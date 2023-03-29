@@ -54,8 +54,11 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
+    
         // On recupère les données de la base de donnée
-       String url = "jdbc:sqlite:/path/to/your/database.db";
+       String url = "jdbc:sqlite:ressources/mydatabase.db";
+
+
         List<Etudiant> etudiantData = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(url);
