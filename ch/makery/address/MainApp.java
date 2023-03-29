@@ -40,7 +40,7 @@ public class MainApp extends Application {
      * Les donnees sont stockees dans differentes listes
      */
     //liste principale
-    private ObservableList<Etudiant> etudiantData = FXCollections.observableArrayList();
+    public ObservableList<Etudiant> etudiantData = FXCollections.observableArrayList();
         //Liste des M1
     private ObservableList<Etudiant> listM1 = FXCollections.observableArrayList();
     //Liste des M2
@@ -59,7 +59,7 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
-    
+       connect();
     }
     
 
@@ -216,14 +216,15 @@ public class MainApp extends Application {
     public static void main(String[] args) {
         launch(args);
           
-        connect();
+     
     }
- public static void connect() {
+ public  void connect() {
      Connection conn = null;
       Statement stmt = null;
       ResultSet rs = null;
         
         try {
+            
             // db parameters
             String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
             // create a connection to the database
@@ -241,6 +242,10 @@ public class MainApp extends Application {
             int anneeNaissance = rs.getInt("Annee_de_Naissance");
             String parcours = rs.getString("Parcours");
             String promotion = rs.getString("Promotion");
+            // Créer un nouvel étudiant avec les informations récupérées
+        Etudiant nouvelEtudiant = new Etudiant(nom, prenom, anneeNaissance, parcours, promotion);
+          etudiantData.add(nouvelEtudiant);
+     
         }
             // Exécuter la requête SQL et obtenir un objet
         } catch (SQLException e) {
@@ -255,6 +260,7 @@ public class MainApp extends Application {
             }
         }
     }
+  
     /**
      * Ouvre une fen�tre de dialogue pour �diter les donn�es pour un �tudiant s�lectionner
      * Si l'utilisateur clique sur OK, le changement sera sauvegarder dans l'objet �tudiant fourni
