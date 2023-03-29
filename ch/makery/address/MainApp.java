@@ -63,7 +63,9 @@ public class MainApp extends Application {
      * Constructeur
      */
     public MainApp() {
-    
+        etudiantData.add(new Etudiant("Jean", "Bernard",1999, "M1","GCELL"));
+        etudiantData.add(new Etudiant("Benoiy", "Gaspard",1998, "M1","GPHY"));
+        etudiantData.add(new Etudiant("Rose", "Jade",1997, "M2","GPHY"));
     }
     
 
