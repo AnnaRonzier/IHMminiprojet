@@ -64,7 +64,7 @@ public class MainApp extends Application {
      */
     public MainApp() {
 
-       connect();
+    
 
     }
     
@@ -232,11 +232,11 @@ public class MainApp extends Application {
         try {
             
             // db parameters
-           // String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
+            String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
             
             
             ///
-            String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
+           //String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
             
             // create a connection to the database
             conn = DriverManager.getConnection(url);
@@ -255,12 +255,7 @@ public class MainApp extends Application {
         while (rs.next()) {
             String nom = rs.getString("Nom");
             String prenom = rs.getString("Prenom");
-
-
-
             int naissance = rs.getInt("Naissance");
-
-
             String parcours = rs.getString("Parcours");
             String promotion = rs.getString("Promotion");
             // Créer un nouvel étudiant avec les informations récupérées
@@ -283,6 +278,7 @@ public class MainApp extends Application {
                 System.out.println(ex.getMessage());
             }
         }
+        connect();
     }
 
     /**
