@@ -147,4 +147,9 @@ public class EtudiantListe {
     public void changeData(ObservableList<Etudiant> newList){
         etudiantTable.setItems(newList);
     }
+    
+    public void setEtudiantData(ObservableList<Etudiant> etudiantData) {
+    etudiantTable.setItems(etudiantData);
+}
+
 }

@@ -64,7 +64,9 @@ public class MainApp extends Application {
      */
     public MainApp() {
 
-    connect();
+
+
+
 
     }
     
@@ -159,8 +161,9 @@ public class MainApp extends Application {
         this.primaryStage.setTitle("Gestion des Etudiants IDLS");
         this.primaryStage.getIcons().add(new Image("/ressources/SFA.png"));
 
-
+        connect();
         initAcceuil();
+
 
         showEtudiantListe();
     }
@@ -194,6 +197,7 @@ public class MainApp extends Application {
      */
     public void showEtudiantListe() {
         try {
+
             // Charge le fichier �tudiant liste.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("EtudiantListe.fxml"));
@@ -202,9 +206,9 @@ public class MainApp extends Application {
             // Set etudiant liste au centre du root layout.
             rootLayout.setCenter(etudiantListe);
 
-            // Donne � l'application main l'acc�s au controller.
             controllerPO = loader.getController();
             controllerPO.setMainApp(this);
+            controllerPO.setEtudiantData(etudiantData);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -219,9 +223,9 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
-    
- 
-    public  void connect() {
+
+ public  void connect() {
+
      Connection conn = null;
       Statement stmt = null;
       ResultSet rs = null;
@@ -230,7 +234,6 @@ public class MainApp extends Application {
             
             // db parameters
             String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
-            
             
             ///
            //String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
@@ -255,12 +258,14 @@ public class MainApp extends Application {
             int anneeDeNaissance = rs.getInt("Naissance");
             String parcours = rs.getString("Parcours");
             String promotion = rs.getString("Promotion");
+            
             // Créer un nouvel étudiant avec les informations récupérées
+
         Etudiant nouvelEtudiant = new Etudiant(nom, prenom,anneeDeNaissance, promotion, parcours);
           etudiantData.add(nouvelEtudiant);
-     
+
         }
-         showEtudiantListe();
+
 
         
             // Exécuter la requête SQL et obtenir un objet

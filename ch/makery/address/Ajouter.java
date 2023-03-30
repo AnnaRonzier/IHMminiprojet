@@ -59,9 +59,8 @@ public class Ajouter {
      */
     public void setEtudiant(Etudiant etudiant) {
         this.etudiant = etudiant;
-
-        prenomField.setText(etudiant.getPrenom());
         nomField.setText(etudiant.getNom());
+        prenomField.setText(etudiant.getPrenom());
         anneeDeNaissanceField.setText(Integer.toString(etudiant.getAnneeDeNaissance()));
         promotionField.setText(etudiant.getPromotion());
         parcoursField.setText(etudiant.getParcours());
@@ -86,24 +85,34 @@ public class Ajouter {
 
     try {
         // Établir la connexion à la base de données SQLite
-        String url = "jdbc:sqlite:/path/to/your/database.db";
+        String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
         conn = DriverManager.getConnection(url);
 
         // Préparer l'instruction SQL pour insérer les données de l'étudiant
-        String sql = "INSERT INTO etudiant (prenom, nom, annee_naissance, promotion, parcours) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO etudiant (Nom, Prenom, Naissance, Promotion, Parcours) VALUES (?, ?, ?, ?, ?)";
         stmt = conn.prepareStatement(sql);
 
+
         // Ajouter les paramètres de l'instruction SQL avec les données de l'étudiant
-        stmt.setString(1, etudiant.getPrenom());
-        stmt.setString(2, etudiant.getNom());
-        stmt.setInt(3, etudiant.getAnneeDeNaissance());
-        stmt.setString(4, etudiant.getPromotion());
-        stmt.setString(5, etudiant.getParcours());
+        stmt.setString(1, nomField.getText());
+        stmt.setString(2, prenomField.getText());
+        stmt.setInt(3,Integer.parseInt(anneeDeNaissanceField.getText()));
+        stmt.setString(4, promotionField.getText());
+        stmt.setString(5, parcoursField.getText());
+
+        System.out.println("Valeurs de paramètres utilisées pour l'insertion : ");
+System.out.println("Nom : " + etudiant.getNom());
+System.out.println("Prénom : " + etudiant.getPrenom());
+System.out.println("Année de naissance : " + etudiant.getAnneeDeNaissance());
+System.out.println("Promotion : " + etudiant.getPromotion());
+System.out.println("Parcours : " + etudiant.getParcours());
 
         // Exécuter l'instruction SQL
         stmt.executeUpdate();
 
         System.out.println("Les données de l'étudiant ont été ajoutées à la base de données.");
+// Fermer la fenêtre pop-up
+dialogStage.close();
     } catch (SQLException e) {
         System.out.println(e.getMessage());
     } finally {
