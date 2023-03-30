@@ -255,11 +255,11 @@ public class MainApp extends Application {
         while (rs.next()) {
             String nom = rs.getString("Nom");
             String prenom = rs.getString("Prenom");
-            int naissance = rs.getInt("Naissance");
+            int anneeDeNaissance = rs.getInt("Naissance");
             String parcours = rs.getString("Parcours");
             String promotion = rs.getString("Promotion");
             // Créer un nouvel étudiant avec les informations récupérées
-        Etudiant nouvelEtudiant = new Etudiant(nom, prenom, naissance, parcours, promotion);
+        Etudiant nouvelEtudiant = new Etudiant(nom, prenom,anneeDeNaissance, parcours, promotion);
           etudiantData.add(nouvelEtudiant);
      
         }
