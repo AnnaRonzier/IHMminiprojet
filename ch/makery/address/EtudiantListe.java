@@ -46,7 +46,7 @@ public class EtudiantListe {
     }
 
     /**
-     * Initialise la classe EtudiantlisteController.
+     * Initialise la classe Etudiantliste
      * Cette m�thode est appel� automatiquement apr�s que le fichier fxml ait �t� charg�
      */
     @FXML

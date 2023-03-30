@@ -25,7 +25,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
+import javafx.fxml.FXML;
 
 
 /**
@@ -64,13 +64,13 @@ public class MainApp extends Application {
      */
     public MainApp() {
 
-    
+    connect();
 
     }
     
 
     /**
-     * M�thode qui retourne les donn�es du tableau en une liste observable
+     * Methode qui retourne les donn�es du tableau en une liste observable
      * @return etudiantData
      */
     public ObservableList<Etudiant> getEtudiantData() {
@@ -79,7 +79,7 @@ public class MainApp extends Application {
 
 
     /**
-     * M�thode qui filtre les etudiants de la promotion ,
+     * Methode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
      * et retourne les donnees en une liste observable
      * @return listM1
@@ -94,7 +94,7 @@ public class MainApp extends Application {
     }
 
     /**
-     * M�thode qui filtre les etudiants de la promotion ,
+     * Methode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
      * et retourne les donnees en une liste observable
      * @return listM2
@@ -108,7 +108,7 @@ public class MainApp extends Application {
         return listM2;
     }
   /**
-     * M�thode qui filtre les etudiants de la promotion ,
+     * Methode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
      * et retourne les donnees en une liste observable
      * @return listGPHY
@@ -123,7 +123,7 @@ public class MainApp extends Application {
     }
 
     /**
-     * M�thode qui filtre les etudiants de la promotion ,
+     * Methode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
      * et retourne les donnees en une liste observable
      * @return listGCELL
@@ -138,7 +138,7 @@ public class MainApp extends Application {
     }
 
     /**
-     * M�thode qui filtre les etudiants de la promotion ,
+     * Methode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
      * et retourne les donnees en une liste observable
      * @return listECMPS
@@ -190,7 +190,7 @@ public class MainApp extends Application {
     }
 
     /**
-     * Affiche la liste des �tudiants dans le root layout.
+     * Affiche la liste des etudiants dans le root layout.
      */
     public void showEtudiantListe() {
         try {
@@ -219,12 +219,9 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
-    public static void main(String[] args) {
-        launch(args);
-          
-     
-    }
- public  void connect() {
+    
+ 
+    public  void connect() {
      Connection conn = null;
       Statement stmt = null;
       ResultSet rs = null;
@@ -259,7 +256,7 @@ public class MainApp extends Application {
             String parcours = rs.getString("Parcours");
             String promotion = rs.getString("Promotion");
             // Créer un nouvel étudiant avec les informations récupérées
-        Etudiant nouvelEtudiant = new Etudiant(nom, prenom,anneeDeNaissance, parcours, promotion);
+        Etudiant nouvelEtudiant = new Etudiant(nom, prenom,anneeDeNaissance, promotion, parcours);
           etudiantData.add(nouvelEtudiant);
      
         }
@@ -278,15 +275,15 @@ public class MainApp extends Application {
                 System.out.println(ex.getMessage());
             }
         }
-        connect();
+        
     }
 
     /**
-     * Ouvre une fen�tre de dialogue pour �diter les donn�es pour un �tudiant s�lectionner
-     * Si l'utilisateur clique sur OK, le changement sera sauvegarder dans l'objet �tudiant fourni
-     * Le bool�en true est retroun�.
+     * Ouvre une fenetre de dialogue pour editer les donnees pour un etudiant selectionner
+     * Si l'utilisateur clique sur OK, le changement sera sauvegarder dans l'objet etudiant fourni
+     * Le booleen true est retroune.
      *
-     * @param etudiant l'objet �tudiant qui doit �tre �dit�
+     * @param etudiant l'objet etudiant qui doit etre edite
      * @return true si l'utilisateur clique sur OK sinon il retourne false.
      */
     public boolean showAjouterDialog(Etudiant etudiant) {
@@ -320,7 +317,7 @@ public class MainApp extends Application {
     }
 
     /**
-     * Methode permettant de changer les donn�es du tableau par une liste donn�e
+     * Methode permettant de changer les donnees du tableau par une liste donnee
      * @param liste
      */
     public void changeData(ObservableList<Etudiant> liste){
