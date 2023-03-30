@@ -245,13 +245,16 @@ public class MainApp extends Application {
              // Créer une instruction SQL pour sélectionner les colonnes de la table Etudiant
          stmt = conn.createStatement();
 
+
          rs = stmt.executeQuery("SELECT Nom, Prenom, Naissance, Parcours, Promotion FROM Etudiant");
+
 
 
          // Parcourir les résultats de la requête
         while (rs.next()) {
             String nom = rs.getString("Nom");
             String prenom = rs.getString("Prenom");
+
 
             int naissance = rs.getInt("Naissance");
 
