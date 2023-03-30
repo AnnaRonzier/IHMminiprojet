@@ -65,7 +65,6 @@ public class MainApp extends Application {
     public MainApp() {
 
 
-
     }
     
 
@@ -221,7 +220,16 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
+<<<<<<< HEAD
 
+=======
+    public static void main(String[] args) {
+        launch(args);
+          
+     
+    }
+    
+>>>>>>> 42ea3c853d13640a18e2e44c1b8999f11e2166ec
  public  void connect() {
 
      Connection conn = null;
@@ -231,13 +239,17 @@ public class MainApp extends Application {
         try {
             
             // db parameters
+<<<<<<< HEAD
 
             String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
 
       
+=======
+            //String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
+>>>>>>> 42ea3c853d13640a18e2e44c1b8999f11e2166ec
             
             ///
-           //String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
+           String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
             
             // create a connection to the database
             conn = DriverManager.getConnection(url);
