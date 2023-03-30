@@ -66,8 +66,6 @@ public class MainApp extends Application {
 
 
 
-
-
     }
     
 
@@ -233,7 +231,10 @@ public class MainApp extends Application {
         try {
             
             // db parameters
+
             String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
+
+      
             
             ///
            //String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
@@ -261,8 +262,12 @@ public class MainApp extends Application {
             
             // Créer un nouvel étudiant avec les informations récupérées
 
-        Etudiant nouvelEtudiant = new Etudiant(nom, prenom,anneeDeNaissance, promotion, parcours);
-          etudiantData.add(nouvelEtudiant);
+
+
+        Etudiant nouvelEtudiant = new Etudiant(nom, prenom,anneeDeNaissance, parcours, promotion);
+          
+        etudiantData.add(nouvelEtudiant);
+     
 
         }
 
