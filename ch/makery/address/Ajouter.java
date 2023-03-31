@@ -82,6 +82,8 @@ public class Ajouter {
     private void handleOk() {
     Connection conn = null;
     PreparedStatement stmt = null;
+// Fermer la fenêtre pop-up
+dialogStage.close();
 
     try {
         // Établir la connexion à la base de données SQLite
@@ -111,8 +113,7 @@ System.out.println("Parcours : " + etudiant.getParcours());
         stmt.executeUpdate();
 
         System.out.println("Les données de l'étudiant ont été ajoutées à la base de données.");
-// Fermer la fenêtre pop-up
-dialogStage.close();
+
     } catch (SQLException e) {
         System.out.println(e.getMessage());
     } finally {
@@ -127,6 +128,7 @@ dialogStage.close();
             System.out.println(ex.getMessage());
         }
     }
+
 }
 
 

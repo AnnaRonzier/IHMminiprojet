@@ -212,6 +212,11 @@ public class MainApp extends Application {
         }
     }
 
+public void refresh(){
+
+        // Rafraîchir la liste des étudiants dans l'interface graphique
+        showEtudiantListe();
+}
     /**
      * Retoune le main stage.
      * @return primaryStage
