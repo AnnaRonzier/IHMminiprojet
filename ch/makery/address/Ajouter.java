@@ -63,7 +63,7 @@ public class Ajouter {
         nomField.setText(etudiant.getNom());
         prenomField.setText(etudiant.getPrenom());
         anneeDeNaissanceField.setText(Integer.toString(etudiant.getAnneeDeNaissance()));
-             parcoursField.setText(etudiant.getParcours());
+       parcoursField.setText(etudiant.getParcours());
         promotionField.setText(etudiant.getPromotion());
    
     }
@@ -101,9 +101,9 @@ public class Ajouter {
         stmt.setString(1, nomField.getText());
         stmt.setString(2, prenomField.getText());
         stmt.setInt(3,Integer.parseInt(anneeDeNaissanceField.getText()));
-        stmt.setString(4, parcoursField.getText());
-        stmt.setString(5, promotionField.getText());
-        System.out.println(parcoursField.getText());
+        stmt.setString(4, promotionField.getText());
+        stmt.setString(5, parcoursField.getText());
+        
 
         // Exécuter l'instruction SQL
         stmt.executeUpdate();
