@@ -141,10 +141,10 @@ public class EtudiantListe {
      */
     @FXML
     private void handleEditEtudiant() {
-        int selectedIndex = etudiantTable.getSelectionModel().getSelectedIndex();
+    int selectedIndex = etudiantTable.getSelectionModel().getSelectedIndex();
     Etudiant selectedEtudiant = etudiantTable.getItems().get(selectedIndex);
     if (selectedEtudiant != null) {
-       boolean okClicked = mainApp.showAjouterDialog(selectedEtudiant);
+       boolean okClicked = mainApp.showAjouterDialogModif(selectedEtudiant);
         if (okClicked) {
             
             // Open a connection to the SQLite database

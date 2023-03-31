@@ -335,38 +335,43 @@ public void refresh(){
             return false;
         }
     }
-public boolean showModifierDialog(Etudiant etudiant) {
+/**
+     * Ouvre une fenetre de dialogue pour editer les donnees pour un etudiant selectionner
+     * Si l'utilisateur clique sur OK, le changement sera sauvegarder dans l'objet etudiant fourni
+     * Le booleen true est retroune.
+     *
+     * @param etudiant l'objet etudiant qui doit etre edite
+     * @return true si l'utilisateur clique sur OK sinon il retourne false.
+     */
+    public boolean showAjouterDialogModif(Etudiant etudiant) {
 
-    try {
-
-        // Charge le fichier fxml et crée un nouveau stage pour la fenêtre de dialogue popup.
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(MainApp.class.getResource("Modifier.fxml"));
-        AnchorPane page = (AnchorPane) loader.load();
-        
-        // Crée la fenêtre de dialogue Stage.
-        Stage dialogStage = new Stage();
-        dialogStage.setTitle("Modifier Etudiant");
-        dialogStage.initModality(Modality.WINDOW_MODAL);
-        dialogStage.initOwner(primaryStage);
-        Scene scene = new Scene(page);
-        dialogStage.setScene(scene);
-        
-        // Set l'étudiant dans le controller.
-        Modifier controller = loader.getController();
-        controller.setDialogStage(dialogStage);
-        controller.setEtudiant(etudiant);
-        
-        // Affiche la fenêtre de dialogue et attends jusqu'à ce que l'utilisateur la ferme.
-        dialogStage.showAndWait();
-
-        return controller.isOkClicked();
-    } catch (IOException e) {
-        e.printStackTrace();
-        return false;
+        try {
+   
+            // Charge le fichier fxml et cr�� un nouveau stage pour la fen�tre de dialogue popup.
+            FXMLLoader loader = new FXMLLoader();
+    
+            loader.setLocation(MainApp.class.getResource("Modifier.fxml"));
+            AnchorPane page = (AnchorPane) loader.load();
+            // Cr�� la fen�tre de dialogue Stage.
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Editer Etudiant");
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(primaryStage);
+            Scene scene = new Scene(page);
+            dialogStage.setScene(scene);
+            // Set l'etudiant dans le controller.
+            Ajouter controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.setEtudiant(etudiant);
+            // Affiche la fen�tre de dialogue et attends jusqu'� ce que l'utilisateur la ferme.
+            dialogStage.showAndWait();
+   
+            return controller.isOkClicked();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
-}
-
     /**
      * Methode permettant de changer les donnees du tableau par une liste donnee
      * @param liste

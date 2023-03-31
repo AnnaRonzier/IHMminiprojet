@@ -82,8 +82,8 @@ public class Ajouter {
     private void handleOk() {
     Connection conn = null;
     PreparedStatement stmt = null;
-// Fermer la fenêtre pop-up
-dialogStage.close();
+    // Fermer la fenêtre pop-up
+    dialogStage.close();
 
     try {
         // Établir la connexion à la base de données SQLite

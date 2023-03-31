@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@Theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.Ajouter">
+<AnchorPane prefHeight="300.0" prefWidth="500.0" stylesheets="@Theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.address.EtudiantListe">
    <children>
       <GridPane layoutX="82.0" layoutY="66.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <columnConstraints>
@@ -35,7 +35,7 @@
             <TextField fx:id="parcoursField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button layoutX="324.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleOk" text="OK" />
+      <Button layoutX="324.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleEditEtudiant" text="OK" />
       <Button layoutX="398.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleCancel" text="Annuler" />
    </children>
 </AnchorPane>
