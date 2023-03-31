@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 /**
- * Controller pour g�rer le panneau de visualisation
+ * Controller pour gerer le panneau de visualisation
  *
  * @author 
  */
@@ -16,7 +16,7 @@ public class Acceuil {
     // Reference � mainApp.
     private MainApp mainApp;
 
-    //Table des �tudiants
+    //Table des etudiants
     @FXML
     private TableView<Etudiant> personTable;
     @FXML
@@ -40,7 +40,7 @@ public class Acceuil {
 
     /**
      * Initialise la classe EtudiantlisteController.
-     * Cette m�thode est appel� automatiquement apr�s que le fichier fxml ait �t� charg�
+     * Cette methode est appele automatiquement apres que le fichier fxml ait ete charge
      */
     @FXML
     private void initialize() {
@@ -48,8 +48,8 @@ public class Acceuil {
 
   
     /**
-     * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > Tous.
-     * Elle permet de mettre � jour le tableau en affichant tous les �tudiants enregistr�s.
+     * Methode handle appelee lorsque l'utilisateur appuie sur l'item Liste > Tous.
+     * Elle permet de mettre � jour le tableau en affichant tous les etudiants enregistres.
      */
     @FXML
     private void handleListeTous() {
@@ -57,8 +57,8 @@ public class Acceuil {
     }
 
     /**
-     * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > M1.
-     * Elle permet de mettre � jour le tableau en affichant tous les �tudiants enregistr�s faisant partie de la promotion M1.
+     * Methode handle appelee lorsque l'utilisateur appuie sur l'item Liste > M1.
+     * Elle permet de mettre � jour le tableau en affichant tous les etudiants enregistres faisant partie de la promotion M1.
      */
     @FXML
     private void handleListeM1() {
