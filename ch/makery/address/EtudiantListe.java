@@ -108,7 +108,7 @@ public class EtudiantListe {
         if (result.get() == ButtonType.OK) {
             Etudiant selectedEtudiant = etudiantTable.getItems().get(selectedIndex);
             //supprimer l'étudiant de la base de données
-            String sql = "DELETE FROM Etudiant WHERE prenom = ? AND nom = ?";
+            String sql = "DELETE FROM Etudiant WHERE nom = ? AND prenom = ?";
             try (Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db");
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, selectedEtudiant.getNom());
