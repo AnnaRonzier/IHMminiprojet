@@ -1,6 +1,8 @@
 package ch.makery.address;
 
- 
+ import java.util.*;
+import java.sql.*;
+
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -92,31 +94,46 @@ public class EtudiantListe {
      * Methode handle appel�e lorsque l'utilisateur appuie sur le bouton effacer.
      */
     @FXML
-    private void handleDeleteEtudiant() {
-        int selectedIndex = etudiantTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
-            //Confirmation de la suppression
-            Alert alert = new Alert(AlertType.CONFIRMATION);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("Suppresion");
-            alert.setHeaderText("Confirmation de suppression");
-            alert.setContentText("Etes-vous sur de vouloir supprimer cet etudiant ?");
+ private void handleDeleteEtudiant() {
+    int selectedIndex = etudiantTable.getSelectionModel().getSelectedIndex();
+    if (selectedIndex >= 0) {
+        //Confirmation de la suppression
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.initOwner(mainApp.getPrimaryStage());
+        alert.setTitle("Suppression");
+        alert.setHeaderText("Confirmation de suppression");
+        alert.setContentText("Etes-vous sûr de vouloir supprimer cet étudiant ?");
 
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK) {
-                etudiantTable.getItems().remove(selectedIndex);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            Etudiant selectedEtudiant = etudiantTable.getItems().get(selectedIndex);
+            //supprimer l'étudiant de la base de données
+            String sql = "DELETE FROM Etudiant WHERE prenom = ? AND nom = ?";
+            try (Connection conn = DriverManager.getConnection("jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db");
+                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                pstmt.setString(1, selectedEtudiant.getNom());
+                pstmt.setString(2, selectedEtudiant.getPrenom());
+                pstmt.executeUpdate();
+                System.out.println(selectedEtudiant.getPrenom());
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
             }
-        } else {
-            // Si rien n'est s�lectionn�
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Etudiant Selected");
-            alert.setContentText("Please select a etudiant in the table.");
-
-            alert.showAndWait();
+            //supprimer l'étudiant de la table view
+            etudiantTable.getItems().remove(selectedIndex);
         }
+    } else {
+        // Si rien n'est sélectionné
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.initOwner(mainApp.getPrimaryStage());
+        alert.setTitle("No Selection");
+        alert.setHeaderText("No Etudiant Selected");
+        alert.setContentText("Please select a etudiant in the table.");
+
+        alert.showAndWait();
     }
+}
+
+
   
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur le bouton modifier.
