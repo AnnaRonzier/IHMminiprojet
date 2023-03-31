@@ -1,5 +1,4 @@
 package ch.makery.address;
-
  
 import java.sql.*;
 import javafx.fxml.FXML;
@@ -7,29 +6,33 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.*;
 
 import ch.makery.address.Etudiant;
 
 /**
- * Controller pour g�rer le panneau d'�dition
+ * Décrivez votre classe Modifier ici.
  *
- * @author 
+ * @author (votre nom)
+ * @version (un numéro de version ou une date)
  */
-public class Ajouter {
-
-   
-    @FXML
-    private TextField prenomField;
+public class Modifier
+{
+     @FXML
+    private TableView<Etudiant> etudiantTable;
     @FXML
     private TextField nomField;
+    @FXML
+    private TextField prenomField;
     @FXML
     private TextField anneeDeNaissanceField;
     @FXML
     private TextField parcoursField;
     @FXML
     private TextField promotionField;
-  
-
+    
+// Reference � la main application.
+    private MainApp mainApp;
 
     private Stage dialogStage;
     private Etudiant etudiant;
@@ -63,9 +66,9 @@ public class Ajouter {
         nomField.setText(etudiant.getNom());
         prenomField.setText(etudiant.getPrenom());
         anneeDeNaissanceField.setText(Integer.toString(etudiant.getAnneeDeNaissance()));
-             parcoursField.setText(etudiant.getParcours());
+        parcoursField.setText(etudiant.getParcours());
         promotionField.setText(etudiant.getPromotion());
-   
+        
     }
 
     /**
@@ -77,56 +80,56 @@ public class Ajouter {
         return okClicked;
     }
 
-    /**
-     * M�thode appel�e lorsque l'utilisateur clique sur OK.
+     /**
+     * Methode handle appel�e lorsque l'utilisateur appuie sur le bouton modifier.
+     * Elle ouvre une fen�tre de dialogue pour modifier les donn�es d'un �tudiant s�lectionn�.
      */
     @FXML
-    private void handleOk() {
-    Connection conn = null;
-    PreparedStatement stmt = null;
-    // Fermer la fenêtre pop-up
+    public void handleOK() {
+        Connection conn = null;
+    
+        // Fermer la fenêtre pop-up
     dialogStage.close();
 
-    try {
-        // Établir la connexion à la base de données SQLite
+            
+            // Open a connection to the SQLite database
+            try  {
+                // Établir la connexion à la base de données SQLite
         String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
         conn = DriverManager.getConnection(url);
-
-        // Préparer l'instruction SQL pour insérer les données de l'étudiant
-        String sql = "INSERT INTO etudiant (Nom, Prenom, Naissance, Parcours, Promotion) VALUES (?, ?, ?, ?, ?)";
-        stmt = conn.prepareStatement(sql);
-
-
-        // Ajouter les paramètres de l'instruction SQL avec les données de l'étudiant
-        stmt.setString(1, nomField.getText());
-        stmt.setString(2, prenomField.getText());
+        
+                // Prepare an SQL UPDATE statement to update the selected student
+PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Prenom=?, Naissance=?, Parcours=?, Promotion=? WHERE nom = ? AND prenom = ?");
+                stmt.setString(1, nomField.getText());
+                stmt.setString(2, prenomField.getText());
         stmt.setInt(3,Integer.parseInt(anneeDeNaissanceField.getText()));
-        stmt.setString(4, parcoursField.getText());
+            stmt.setString(4, parcoursField.getText());
         stmt.setString(5, promotionField.getText());
-        System.out.println(parcoursField.getText());
-
-        // Exécuter l'instruction SQL
-        stmt.executeUpdate();
-
-        System.out.println("Les données de l'étudiant ont été ajoutées à la base de données.");
-
-    } catch (SQLException e) {
-        System.out.println(e.getMessage());
-    } finally {
-        try {
-            if (stmt != null) {
-                stmt.close();
+    
+        stmt.setString(6, nomField.getText());
+        stmt.setString(7, prenomField.getText());
+     
+                // Execute the UPDATE statement
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            if (conn != null) {
-                conn.close();
-            }
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }
 
+          
+    
+    //} else {
+        // Nothing selected.
+        //Alert alert = new Alert(AlertType.WARNING);
+        //alert.initOwner(mainApp.getPrimaryStage());
+        //alert.setTitle("No Selection");
+        //alert.setHeaderText("No Etudiant Selected");
+        //alert.setContentText("Please select a etudiant in the table.");
+
+        //alert.showAndWait();
+    //}
+    
+//}
 }
-
 
     /**
      * M�thode appel�e lorsque l'utilisateur clique sur Cancel.

@@ -8,6 +8,7 @@ import java.io.IOException;
 import ch.makery.address.Etudiant;
 import ch.makery.address.Ajouter;
 import ch.makery.address.Acceuil;
+import ch.makery.address.Modifier;
 import ch.makery.address.EtudiantListe;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -57,7 +58,7 @@ public class MainApp extends Application {
     //Liste des ECMPS
     private ObservableList<Etudiant> listECMPS = FXCollections.observableArrayList();
 
-
+private Stage dialogStageM;
 
     /**
      * Constructeur
@@ -344,34 +345,35 @@ public void refresh(){
      * @return true si l'utilisateur clique sur OK sinon il retourne false.
      */
     public boolean showAjouterDialogModif(Etudiant etudiant) {
-
         try {
-   
+    
             // Charge le fichier fxml et cr�� un nouveau stage pour la fen�tre de dialogue popup.
             FXMLLoader loader = new FXMLLoader();
     
             loader.setLocation(MainApp.class.getResource("Modifier.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
             // Cr�� la fen�tre de dialogue Stage.
-            Stage dialogStage = new Stage();
-            dialogStage.setTitle("Editer Etudiant");
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(primaryStage);
+            Stage dialogStageM= new Stage();
+            dialogStageM.setTitle("Editer Etudiant");
+            dialogStageM.initModality(Modality.WINDOW_MODAL);
+            dialogStageM.initOwner(primaryStage);
             Scene scene = new Scene(page);
-            dialogStage.setScene(scene);
+            dialogStageM.setScene(scene);
             // Set l'etudiant dans le controller.
-            Ajouter controller = loader.getController();
-            controller.setDialogStage(dialogStage);
+            Modifier controller = loader.getController();
+            controller.setDialogStage(dialogStageM);
             controller.setEtudiant(etudiant);
             // Affiche la fen�tre de dialogue et attends jusqu'� ce que l'utilisateur la ferme.
-            dialogStage.showAndWait();
-   
+            dialogStageM.showAndWait();
             return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
+       
     }
+ 
+
     /**
      * Methode permettant de changer les donnees du tableau par une liste donnee
      * @param liste
@@ -379,4 +381,5 @@ public void refresh(){
     public void changeData(ObservableList<Etudiant> liste){
         controllerPO.changeData(liste);
     }
+   
 }

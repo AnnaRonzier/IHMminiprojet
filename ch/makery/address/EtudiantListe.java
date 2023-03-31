@@ -2,6 +2,7 @@ package ch.makery.address;
 
  import java.util.*;
 import java.sql.*;
+import javafx.stage.Stage;
 
 
 import javafx.collections.ObservableList;
@@ -36,7 +37,7 @@ public class EtudiantListe {
     private TableColumn<Etudiant, String> promotionColumn;
       @FXML
     private TableColumn<Etudiant, String> parcoursColumn;
-
+    
     // Reference � la main application.
     private MainApp mainApp;
 
@@ -60,10 +61,11 @@ public class EtudiantListe {
                 cellData -> cellData.getValue().nomProperty());
         anneeDeNaissanceColumn.setCellValueFactory(
                 cellData -> cellData.getValue().anneeDeNaissanceProperty().asObject());
+                 parcoursColumn.setCellValueFactory(
+                cellData -> cellData.getValue().parcoursProperty());
         promotionColumn.setCellValueFactory(
                 cellData -> cellData.getValue().promotionProperty());
-        parcoursColumn.setCellValueFactory(
-                cellData -> cellData.getValue().parcoursProperty());
+       
     }
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item ajouter .
@@ -78,6 +80,32 @@ public class EtudiantListe {
             mainApp.getEtudiantData().add(tempEtudiant);
         }
     }
+     /**
+     * Methode handle appel�e lorsque l'utilisateur appuie sur l'item ajouter .
+     * Elle ouvre une fen�tre de dialogue pour ajouter de nouvelles donn�es d'un �tudiant.
+     */
+    @FXML
+   private void handleEditEtudiant() {
+    // Récupérer l'étudiant sélectionné dans le TableView
+    Etudiant selectedEtudiant = etudiantTable.getSelectionModel().getSelectedItem();
+    if (selectedEtudiant != null) {
+        // Ouvrir la boîte de dialogue d'édition avec l'étudiant sélectionné
+        boolean okClicked = mainApp.showAjouterDialogModif(selectedEtudiant);
+        if (okClicked) {
+            Modifier modifier = new Modifier();
+            modifier.handleOK();
+        }
+    } else {
+        // Aucun étudiant sélectionné, afficher un message d'erreur
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.initOwner(mainApp.getPrimaryStage());
+        alert.setTitle("Aucune sélection");
+        alert.setHeaderText("Aucun étudiant sélectionné");
+        alert.setContentText("Veuillez sélectionner un étudiant dans la liste.");
+        alert.showAndWait();
+    }
+}
+
 
   
     /**
@@ -114,7 +142,6 @@ public class EtudiantListe {
                 pstmt.setString(1, selectedEtudiant.getNom());
                 pstmt.setString(2, selectedEtudiant.getPrenom());
                 pstmt.executeUpdate();
-                System.out.println(selectedEtudiant.getPrenom());
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
@@ -135,54 +162,7 @@ public class EtudiantListe {
 
 
   
-    /**
-     * Methode handle appel�e lorsque l'utilisateur appuie sur le bouton modifier.
-     * Elle ouvre une fen�tre de dialogue pour modifier les donn�es d'un �tudiant s�lectionn�.
-     */
-    @FXML
-    private void handleEditEtudiant() {
-    int selectedIndex = etudiantTable.getSelectionModel().getSelectedIndex();
-    Etudiant selectedEtudiant = etudiantTable.getItems().get(selectedIndex);
-    if (selectedEtudiant != null) {
-       boolean okClicked = mainApp.showAjouterDialogModif(selectedEtudiant);
-        if (okClicked) {
-            
-            // Open a connection to the SQLite database
-            try (Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db")) {
-                // Prepare an SQL UPDATE statement to update the selected student
-                PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET nom=?, prenom=?, anneeDeNaissance=?, promotion=?, parcours=? WHERE nom = ?, prenom = ?");
-                stmt.setString(1, selectedEtudiant.getNom());
-                stmt.setString(2, selectedEtudiant.getPrenom());
-                stmt.setInt(3, selectedEtudiant.getAnneeDeNaissance());
-                stmt.setString(4, selectedEtudiant.getPromotion());
-                stmt.setString(5, selectedEtudiant.getParcours());
-                stmt.setString(6, selectedEtudiant.getNom());
-                stmt.setString(7, selectedEtudiant.getPrenom());
-                System.out.println(selectedEtudiant.getNom());
-                System.out.println(selectedEtudiant.getPrenom());
-                System.out.println("ok");
-                // Execute the UPDATE statement
-                stmt.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-                System.out.println("non ok");
-            }
 
-            // Refresh the table view with the updated data
-            etudiantTable.refresh();
-        }
-    } else {
-        // Nothing selected.
-        Alert alert = new Alert(AlertType.WARNING);
-        alert.initOwner(mainApp.getPrimaryStage());
-        alert.setTitle("No Selection");
-        alert.setHeaderText("No Etudiant Selected");
-        alert.setContentText("Please select a etudiant in the table.");
-
-        alert.showAndWait();
-    }
-    
-}
 
 
     /**
@@ -196,5 +176,11 @@ public class EtudiantListe {
     public void setEtudiantData(ObservableList<Etudiant> etudiantData) {
     etudiantTable.setItems(etudiantData);
 }
-
+  /**
+     * M�thode appel�e lorsque l'utilisateur clique sur Cancel.
+     */
+    @FXML
+    private void handleCancel() {
+        
+    }
 }

@@ -36,12 +36,13 @@ public class Etudiant {
      * @param anneeDeNaissance
      * @param promotion
      */
-    public Etudiant(String nom, String prenom, Integer anneeDeNaissance, String promotion, String parcours) {
+    public Etudiant(String nom, String prenom, Integer anneeDeNaissance, String parcours, String promotion) {
         this.nom = new SimpleStringProperty(nom);
         this.prenom = new SimpleStringProperty(prenom);
         this.anneeDeNaissance = new SimpleIntegerProperty(anneeDeNaissance);
-        this.promotion = new SimpleStringProperty(promotion);
         this.parcours = new SimpleStringProperty(parcours);
+        this.promotion = new SimpleStringProperty(promotion);
+        
     }
 
     /**
