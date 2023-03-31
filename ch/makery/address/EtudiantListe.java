@@ -141,21 +141,49 @@ public class EtudiantListe {
      */
     @FXML
     private void handleEditEtudiant() {
-        Etudiant selectedEtudiant = etudiantTable.getSelectionModel().getSelectedItem();
-        if (selectedEtudiant != null) {
-            @SuppressWarnings("unused")
-            boolean okClicked = mainApp.showAjouterDialog(selectedEtudiant);
-        } else {
-            // Nothing selected.
-            Alert alert = new Alert(AlertType.WARNING);
-            alert.initOwner(mainApp.getPrimaryStage());
-            alert.setTitle("No Selection");
-            alert.setHeaderText("No Etudiant Selected");
-            alert.setContentText("Please select a etudiant in the table.");
+        int selectedIndex = etudiantTable.getSelectionModel().getSelectedIndex();
+    Etudiant selectedEtudiant = etudiantTable.getItems().get(selectedIndex);
+    if (selectedEtudiant != null) {
+       boolean okClicked = mainApp.showAjouterDialog(selectedEtudiant);
+        if (okClicked) {
+            
+            // Open a connection to the SQLite database
+            try (Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db")) {
+                // Prepare an SQL UPDATE statement to update the selected student
+                PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET nom=?, prenom=?, anneeDeNaissance=?, promotion=?, parcours=? WHERE nom = ?, prenom = ?");
+                stmt.setString(1, selectedEtudiant.getNom());
+                stmt.setString(2, selectedEtudiant.getPrenom());
+                stmt.setInt(3, selectedEtudiant.getAnneeDeNaissance());
+                stmt.setString(4, selectedEtudiant.getPromotion());
+                stmt.setString(5, selectedEtudiant.getParcours());
+                stmt.setString(6, selectedEtudiant.getNom());
+                stmt.setString(7, selectedEtudiant.getPrenom());
+                System.out.println(selectedEtudiant.getNom());
+                System.out.println(selectedEtudiant.getPrenom());
+                System.out.println("ok");
+                // Execute the UPDATE statement
+                stmt.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                System.out.println("non ok");
+            }
 
-            alert.showAndWait();
+            // Refresh the table view with the updated data
+            etudiantTable.refresh();
         }
+    } else {
+        // Nothing selected.
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.initOwner(mainApp.getPrimaryStage());
+        alert.setTitle("No Selection");
+        alert.setHeaderText("No Etudiant Selected");
+        alert.setContentText("Please select a etudiant in the table.");
+
+        alert.showAndWait();
     }
+    
+}
+
 
     /**
      * Methode permettant de changer les donn�es du tableau par une liste donn�e

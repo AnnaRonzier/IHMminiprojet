@@ -335,6 +335,37 @@ public void refresh(){
             return false;
         }
     }
+public boolean showModifierDialog(Etudiant etudiant) {
+
+    try {
+
+        // Charge le fichier fxml et crée un nouveau stage pour la fenêtre de dialogue popup.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("Modifier.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+        
+        // Crée la fenêtre de dialogue Stage.
+        Stage dialogStage = new Stage();
+        dialogStage.setTitle("Modifier Etudiant");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+        
+        // Set l'étudiant dans le controller.
+        Modifier controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setEtudiant(etudiant);
+        
+        // Affiche la fenêtre de dialogue et attends jusqu'à ce que l'utilisateur la ferme.
+        dialogStage.showAndWait();
+
+        return controller.isOkClicked();
+    } catch (IOException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
 
     /**
      * Methode permettant de changer les donnees du tableau par une liste donnee
