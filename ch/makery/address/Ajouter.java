@@ -88,7 +88,10 @@ private MainApp mainApp;
     PreparedStatement stmt = null;
     // Fermer la fenêtre pop-up
     dialogStage.close();
-
+if (!isInputValid()) {
+return; // les entrées ne sont pas valides, donc ne pas exécuter la requête SQL
+}
+else {
     try {
         // Établir la connexion à la base de données SQLite
         String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
@@ -126,7 +129,7 @@ private MainApp mainApp;
         }
     }
     
-
+}
 }
 
 

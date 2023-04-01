@@ -91,7 +91,12 @@ public class Modifier
         // Fermer la fenêtre pop-up
     dialogStage.close();
 
-            
+            if (!isInputValid()) {
+return; // les entrées ne sont pas valides, donc ne pas exécuter la requête SQL
+}
+else {
+    int selectedIndex = etudiantTable.getSelectionModel().getSelectedIndex();
+    if (selectedIndex >= 0) {
             // Open a connection to the SQLite database
             try  {
                 // Établir la connexion à la base de données SQLite
@@ -117,19 +122,19 @@ PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Preno
 
           
     
-    //} else {
-        // Nothing selected.
-        //Alert alert = new Alert(AlertType.WARNING);
-        //alert.initOwner(mainApp.getPrimaryStage());
-        //alert.setTitle("No Selection");
-        //alert.setHeaderText("No Etudiant Selected");
-        //alert.setContentText("Please select a etudiant in the table.");
+    } 
+    else {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.initOwner(mainApp.getPrimaryStage());
+        alert.setTitle("No Selection");
+        alert.setHeaderText("No Etudiant Selected");
+        alert.setContentText("Please select a etudiant in the table.");
 
-        //alert.showAndWait();
-    //}
-    
-//}
+        alert.showAndWait();
+    }
 }
+}
+
 
     /**
      * M�thode appel�e lorsque l'utilisateur clique sur Cancel.
