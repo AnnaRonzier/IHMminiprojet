@@ -94,8 +94,8 @@ return; // les entrées ne sont pas valides, donc ne pas exécuter la requête S
 else {
     try {
         // Établir la connexion à la base de données SQLite
-        String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
-        conn = DriverManager.getConnection(url);
+       String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
+ conn = DriverManager.getConnection(url);
 
         // Préparer l'instruction SQL pour insérer les données de l'étudiant
         String sql = "INSERT INTO etudiant (Nom, Prenom, Naissance, Parcours, Promotion) VALUES (?, ?, ?, ?, ?)";
@@ -172,7 +172,7 @@ else {
             errorMessage += "Promotion non valide!\n La promotion doit etre M1 ou M2 \n";
         }
         if (parcoursField.getText() == null || parcoursField.getText().length() == 0 || (parcoursField.getText().matches("GPHY") == false && parcoursField.getText().matches("GCELL") == false && parcoursField.getText().matches("ECPMPS") == false)) {
-            errorMessage += "Promotion non valide!\n La promotion doit etre GPHY, GCELL ou ECMPS \n";
+            errorMessage += "Parcours non valide!\n Le parcours doit etre GPHY, GCELL ou ECMPS \n";
         }
 
         if (errorMessage.length() == 0) {

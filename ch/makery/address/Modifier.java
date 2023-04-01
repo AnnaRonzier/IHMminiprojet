@@ -100,8 +100,8 @@ else {
             // Open a connection to the SQLite database
             try  {
                 // Établir la connexion à la base de données SQLite
-        String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
-        conn = DriverManager.getConnection(url);
+        String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
+ conn = DriverManager.getConnection(url);
         
                 // Prepare an SQL UPDATE statement to update the selected student
 PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Prenom=?, Naissance=?, Parcours=?, Promotion=? WHERE nom = ? AND prenom = ?");

@@ -245,18 +245,8 @@ private Stage dialogStageM;
         try {
             
             // db parameters
+           String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
 
-
-            //String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
-
-      
-
-
-
-            
-            ///
-           String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
-            
             // create a connection to the database
             conn = DriverManager.getConnection(url);
             
