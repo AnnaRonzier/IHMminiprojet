@@ -249,6 +249,7 @@ private Stage dialogStageM;
 
 
 
+
            // String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
 
       
@@ -258,6 +259,7 @@ private Stage dialogStageM;
             
             ///
           // String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
+
 
             // create a connection to the database
             conn = DriverManager.getConnection(url);
