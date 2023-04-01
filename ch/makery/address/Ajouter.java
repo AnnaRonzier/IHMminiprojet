@@ -1,12 +1,13 @@
 package ch.makery.address;
 
- 
+ import ch.makery.address.MainApp;
 import java.sql.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.control.TableView;
 
 import ch.makery.address.Etudiant;
 
@@ -30,11 +31,12 @@ public class Ajouter {
     private TextField promotionField;
   
 
-
+private MainApp mainApp;
     private Stage dialogStage;
     private Etudiant etudiant;
     private boolean okClicked = false;
-
+ @FXML
+    private TableView<Etudiant> etudiantTable;
 
     /**
      * Initialise la classe EtudiantlisteController.
@@ -109,7 +111,6 @@ public class Ajouter {
         stmt.executeUpdate();
 
         System.out.println("Les données de l'étudiant ont été ajoutées à la base de données.");
-
     } catch (SQLException e) {
         System.out.println(e.getMessage());
     } finally {
@@ -124,6 +125,7 @@ public class Ajouter {
             System.out.println(ex.getMessage());
         }
     }
+    
 
 }
 

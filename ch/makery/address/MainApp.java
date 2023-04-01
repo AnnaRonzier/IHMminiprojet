@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import javafx.scene.control.TableView;
 
 import javafx.fxml.FXML;
 
@@ -44,6 +45,8 @@ public class MainApp extends Application {
     /**
      * Les donnees sont stockees dans differentes listes
      */
+ @FXML
+    private TableView<Etudiant> etudiantTable;
     //liste principale
     public ObservableList<Etudiant> etudiantData = FXCollections.observableArrayList();
         //Liste des M1
@@ -85,13 +88,15 @@ private Stage dialogStageM;
      * @return listM1
      */
     public ObservableList<Etudiant> getM1Data() {
-        for (Etudiant p : etudiantData){
-            if(p.getPromotion() == "M1"){
-                listM1.add(p);
-            }
+    ObservableList<Etudiant> listM1 = FXCollections.observableArrayList();
+    for (Etudiant p : etudiantData){
+        if(p.getPromotion().equals("M1")){
+            listM1.add(p);
         }
-        return listM1;
     }
+    return listM1;
+}
+
 
     /**
      * Methode qui filtre les etudiants de la promotion ,
@@ -100,12 +105,13 @@ private Stage dialogStageM;
      * @return listM2
      */
     public ObservableList<Etudiant> getM2Data() {
-        for (Etudiant p : etudiantData){
-            if(p.getPromotion() == "M2"){
-                listM2.add(p);
-            }
+        ObservableList<Etudiant> listM2 = FXCollections.observableArrayList();
+    for (Etudiant p : etudiantData){
+        if(p.getPromotion().equals("M2")){
+            listM2.add(p);
         }
-        return listM2;
+    }
+    return listM2;
     }
   /**
      * Methode qui filtre les etudiants de la promotion ,
@@ -114,13 +120,15 @@ private Stage dialogStageM;
      * @return listGPHY
      */
     public ObservableList<Etudiant> getGPHYData() {
-        for (Etudiant p : etudiantData){
-            if(p.getParcours() == "GPHY"){
-                listGPHY.add(p);
-            }
+        ObservableList<Etudiant> listGPHY = FXCollections.observableArrayList();
+    for (Etudiant p : etudiantData){
+        if(p.getParcours().equals("GPHY")){
+            listGPHY.add(p);
         }
-        return listGPHY;
     }
+    return listGPHY;
+    }
+ 
 
     /**
      * Methode qui filtre les etudiants de la promotion ,
@@ -129,12 +137,13 @@ private Stage dialogStageM;
      * @return listGCELL
      */
     public ObservableList<Etudiant> getGCELLData() {
-        for (Etudiant p : etudiantData){
-            if(p.getParcours() == "GCELL"){
-                listGCELL.add(p);
-            }
+        ObservableList<Etudiant> listGCELL = FXCollections.observableArrayList();
+    for (Etudiant p : etudiantData){
+        if(p.getParcours().equals("GCELL")){
+            listGCELL.add(p);
         }
-        return listGCELL;
+    }
+    return listGCELL;
     }
 
     /**
@@ -144,12 +153,13 @@ private Stage dialogStageM;
      * @return listECMPS
      */
     public ObservableList<Etudiant> getECMPSData() {
-        for (Etudiant p : etudiantData){
-            if(p.getParcours() == "ECMPS"){
-                listECMPS.add(p);
-            }
+        ObservableList<Etudiant> listECMPS = FXCollections.observableArrayList();
+    for (Etudiant p : etudiantData){
+        if(p.getParcours().equals("ECMPS")){
+            listECMPS.add(p);
         }
-        return listECMPS;
+    }
+    return listECMPS;
     }
 
 
@@ -190,6 +200,7 @@ private Stage dialogStageM;
         }
     }
 
+
     /**
      * Affiche la liste des etudiants dans le root layout.
      */
@@ -213,11 +224,6 @@ private Stage dialogStageM;
         }
     }
 
-public void refresh(){
-
-        // Rafraîchir la liste des étudiants dans l'interface graphique
-        showEtudiantListe();
-}
     /**
      * Retoune le main stage.
      * @return primaryStage
@@ -226,11 +232,12 @@ public void refresh(){
         return primaryStage;
     }
 
+        
 
     
 
  public  void connect() {
-
+    etudiantData.clear();
      Connection conn = null;
       Statement stmt = null;
       ResultSet rs = null;

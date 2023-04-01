@@ -78,8 +78,12 @@ public class EtudiantListe {
         System.out.println("/");
         if (okClicked) {
             mainApp.getEtudiantData().add(tempEtudiant);
+
+          
         }
+       mainApp.connect();
     }
+
      /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item ajouter .
      * Elle ouvre une fen�tre de dialogue pour ajouter de nouvelles donn�es d'un �tudiant.
@@ -104,6 +108,7 @@ public class EtudiantListe {
         alert.setContentText("Veuillez sélectionner un étudiant dans la liste.");
         alert.showAndWait();
     }
+     mainApp.connect();
 }
 
 
@@ -176,11 +181,5 @@ public class EtudiantListe {
     public void setEtudiantData(ObservableList<Etudiant> etudiantData) {
     etudiantTable.setItems(etudiantData);
 }
-  /**
-     * M�thode appel�e lorsque l'utilisateur clique sur Cancel.
-     */
-    @FXML
-    private void handleCancel() {
-        
-    }
+ 
 }
