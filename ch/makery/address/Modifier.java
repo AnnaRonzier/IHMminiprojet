@@ -91,12 +91,17 @@ public class Modifier
         // Fermer la fenêtre pop-up
     dialogStage.close();
 
-            
+            if (!isInputValid()) {
+return; // les entrées ne sont pas valides, donc ne pas exécuter la requête SQL
+}
+else {
+    int selectedIndex = etudiantTable.getSelectionModel().getSelectedIndex();
+    if (selectedIndex >= 0) {
             // Open a connection to the SQLite database
             try  {
                 // Établir la connexion à la base de données SQLite
-        String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
-        conn = DriverManager.getConnection(url);
+        String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
+ conn = DriverManager.getConnection(url);
         
                 // Prepare an SQL UPDATE statement to update the selected student
 PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Prenom=?, Naissance=?, Parcours=?, Promotion=? WHERE nom = ? AND prenom = ?");
@@ -117,19 +122,19 @@ PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Preno
 
           
     
-    //} else {
-        // Nothing selected.
-        //Alert alert = new Alert(AlertType.WARNING);
-        //alert.initOwner(mainApp.getPrimaryStage());
-        //alert.setTitle("No Selection");
-        //alert.setHeaderText("No Etudiant Selected");
-        //alert.setContentText("Please select a etudiant in the table.");
+    } 
+    else {
+        Alert alert = new Alert(AlertType.WARNING);
+        alert.initOwner(mainApp.getPrimaryStage());
+        alert.setTitle("No Selection");
+        alert.setHeaderText("No Etudiant Selected");
+        alert.setContentText("Please select a etudiant in the table.");
 
-        //alert.showAndWait();
-    //}
-    
-//}
+        alert.showAndWait();
+    }
 }
+}
+
 
     /**
      * M�thode appel�e lorsque l'utilisateur clique sur Cancel.
@@ -170,7 +175,7 @@ PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Preno
             errorMessage += "Promotion non valide!\n La promotion doit etre M1 ou M2 \n";
         }
         if (parcoursField.getText() == null || parcoursField.getText().length() == 0 || (parcoursField.getText().matches("GPHY") == false && parcoursField.getText().matches("GCELL") == false && parcoursField.getText().matches("ECPMPS") == false)) {
-            errorMessage += "Promotion non valide!\n La promotion doit etre GPHY, GCELL ou ECMPS \n";
+            errorMessage += "Parcours non valide!\n Le parcours doit etre GPHY, GCELL ou ECMPS \n";
         }
 
         if (errorMessage.length() == 0) {
