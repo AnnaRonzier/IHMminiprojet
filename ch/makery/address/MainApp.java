@@ -232,10 +232,6 @@ private Stage dialogStageM;
         return primaryStage;
     }
 
-        
-
-    
-
  public  void connect() {
     etudiantData.clear();
      Connection conn = null;
