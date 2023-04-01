@@ -106,8 +106,9 @@ else {
         stmt.setString(1, nomField.getText());
         stmt.setString(2, prenomField.getText());
         stmt.setInt(3,Integer.parseInt(anneeDeNaissanceField.getText()));
-        stmt.setString(4, promotionField.getText());
-        stmt.setString(5, parcoursField.getText());
+        stmt.setString(4, parcoursField.getText());
+        stmt.setString(5, promotionField.getText());
+        
         
 
         // Exécuter l'instruction SQL
@@ -181,8 +182,8 @@ else {
             // Show the error message.
             Alert alert = new Alert(AlertType.ERROR);
             alert.initOwner(dialogStage);
-            alert.setTitle("Fields non valides");
-            alert.setHeaderText(" Corriger les fields invalides, s'il vous plait");
+            alert.setTitle("Entrées non valides");
+            alert.setHeaderText(" Corriger les données invalides, s'il vous plait");
             alert.setContentText(errorMessage);
 
             alert.showAndWait();

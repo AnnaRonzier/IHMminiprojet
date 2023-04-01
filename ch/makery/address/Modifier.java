@@ -95,8 +95,7 @@ public class Modifier
 return; // les entrées ne sont pas valides, donc ne pas exécuter la requête SQL
 }
 else {
-    int selectedIndex = etudiantTable.getSelectionModel().getSelectedIndex();
-    if (selectedIndex >= 0) {
+   
             // Open a connection to the SQLite database
             try  {
                 // Établir la connexion à la base de données SQLite
@@ -110,7 +109,7 @@ PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Preno
         stmt.setInt(3,Integer.parseInt(anneeDeNaissanceField.getText()));
             stmt.setString(4, parcoursField.getText());
         stmt.setString(5, promotionField.getText());
-    
+ 
         stmt.setString(6, nomField.getText());
         stmt.setString(7, prenomField.getText());
      
@@ -123,16 +122,8 @@ PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Preno
           
     
     } 
-    else {
-        Alert alert = new Alert(AlertType.WARNING);
-        alert.initOwner(mainApp.getPrimaryStage());
-        alert.setTitle("No Selection");
-        alert.setHeaderText("No Etudiant Selected");
-        alert.setContentText("Please select a etudiant in the table.");
+ 
 
-        alert.showAndWait();
-    }
-}
 }
 
 
@@ -184,8 +175,8 @@ PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Preno
             // Show the error message.
             Alert alert = new Alert(AlertType.ERROR);
             alert.initOwner(dialogStage);
-            alert.setTitle("Fields non valides");
-            alert.setHeaderText(" Corriger les fields invalides, s'il vous plait");
+            alert.setTitle("Entrées non valides");
+            alert.setHeaderText(" Corriger les données invalides, s'il vous plait");
             alert.setContentText(errorMessage);
 
             alert.showAndWait();
