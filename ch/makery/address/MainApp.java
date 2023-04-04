@@ -102,65 +102,49 @@ private Stage dialogStageM;
      * Methode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
      * et retourne les donnees en une liste observable
-     * @return listM2
+     * @return listD
      */
-    public ObservableList<Etudiant> getM2Data() {
-        ObservableList<Etudiant> listM2 = FXCollections.observableArrayList();
+    public ObservableList<Etudiant> getParcData(String option1) {
+        ObservableList<Etudiant> listParc = FXCollections.observableArrayList();
     for (Etudiant p : etudiantData){
-        if(p.getPromotion().equals("M2")){
-            listM2.add(p);
+        if(p.getPromotion().equals(option1)){
+            listParc.add(p);
         }
+        
     }
-    return listM2;
+    return listParc;
     }
   /**
      * Methode qui filtre les etudiants de la promotion ,
      * les stocke dans une liste
      * et retourne les donnees en une liste observable
-     * @return listGPHY
+     * @return listPromData
      */
-    public ObservableList<Etudiant> getGPHYData() {
-        ObservableList<Etudiant> listGPHY = FXCollections.observableArrayList();
+    public ObservableList<Etudiant> getPromData(String option2) {
+        ObservableList<Etudiant> listProm = FXCollections.observableArrayList();
     for (Etudiant p : etudiantData){
-        if(p.getParcours().equals("GPHY")){
-            listGPHY.add(p);
+        if(p.getParcours().equals(option2)){
+            listProm.add(p);
         }
     }
-    return listGPHY;
+    return listProm;
     }
- 
-
-    /**
-     * Methode qui filtre les etudiants de la promotion ,
-     * les stocke dans une liste
-     * et retourne les donnees en une liste observable
-     * @return listGCELL
-     */
-    public ObservableList<Etudiant> getGCELLData() {
-        ObservableList<Etudiant> listGCELL = FXCollections.observableArrayList();
-    for (Etudiant p : etudiantData){
-        if(p.getParcours().equals("GCELL")){
-            listGCELL.add(p);
+    
+public ObservableList<Etudiant> getData(String promotion, String parcours) {
+    ObservableList<Etudiant> filteredData = FXCollections.observableArrayList();
+    for (Etudiant etudiant : etudiantData) {
+        if (etudiant.getPromotion().equals(promotion) && etudiant.getParcours().equals(parcours)) {
+            filteredData.add(etudiant);
+        }
+        else if (etudiant.getPromotion().equals(promotion)) {
+            filteredData.add(etudiant);
+        }
+        else if (etudiant.getParcours().equals(parcours)) {
+            filteredData.add(etudiant);
         }
     }
-    return listGCELL;
-    }
-
-    /**
-     * Methode qui filtre les etudiants de la promotion ,
-     * les stocke dans une liste
-     * et retourne les donnees en une liste observable
-     * @return listECMPS
-     */
-    public ObservableList<Etudiant> getECMPSData() {
-        ObservableList<Etudiant> listECMPS = FXCollections.observableArrayList();
-    for (Etudiant p : etudiantData){
-        if(p.getParcours().equals("ECMPS")){
-            listECMPS.add(p);
-        }
-    }
-    return listECMPS;
-    }
+    return filteredData;
+}
 
 
     @Override
@@ -243,12 +227,6 @@ private Stage dialogStageM;
             // db parameters
            String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
 
-
-
-           // String url = "jdbc:sqlite:/Users/thomastessier/Desktop/GestionEtudiantsFinal-copy-copy2/sqlite/db/chinook.db";
-            
-
-          // String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
 
             // create a connection to the database
             conn = DriverManager.getConnection(url);

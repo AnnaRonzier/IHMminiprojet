@@ -62,7 +62,8 @@ public class Acceuil {
      */
     @FXML
     private void handleListeM1() {
-        mainApp.changeData(mainApp.getM1Data());
+        String promotion = "M1";
+        mainApp.changeData(mainApp.getData(promotion, null));
     }
 
     /**
@@ -71,15 +72,19 @@ public class Acceuil {
      */
     @FXML
     private void handleListeM2() {
-        mainApp.changeData(mainApp.getM2Data());
+        String promotion = "M2";
+        mainApp.changeData(mainApp.getData(promotion, null));
     }
+
+
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > GPHY.
      * Elle permet de mettre � jour le tableau en affichant tous les �tudiants enregistr�s faisant partie du parcours GPHY.
      */
     @FXML
     private void handleListeGPHY() {
-        mainApp.changeData(mainApp.getGPHYData());
+        String parcours = "GPHY";
+        mainApp.changeData(mainApp.getData(null, parcours));
     }
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > GCELL.
@@ -87,7 +92,8 @@ public class Acceuil {
      */
     @FXML
     private void handleListeGCELL() {
-        mainApp.changeData(mainApp.getGCELLData());
+        String parcours = "GCELL";
+        mainApp.changeData(mainApp.getData(null, parcours));
     }
     /**
      * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > ECMPS.
@@ -95,7 +101,8 @@ public class Acceuil {
      */
     @FXML
     private void handleListeECMPS() {
-        mainApp.changeData(mainApp.getECMPSData());
+        String parcours = "ECMPS";
+        mainApp.changeData(mainApp.getData(null, parcours));
     }
 }
 
