@@ -56,18 +56,18 @@
 }
 
 .menu:hover{
-     -fx-background-color: #005050;
+     -fx-background-color: #005028;
 }
 .menu:showing{
-     -fx-background-color: #005050;
+     -fx-background-color: #005028;
 }
 
 .context-menu {
-    -fx-background-color: #008080;
+    -fx-background-color: #008040;
 }
 
 .menu-item:focused {
-     -fx-background-color: #005050;
+     -fx-background-color: #005028;
 }
 
 .menu-bar .label {
@@ -78,7 +78,7 @@
 }
 
 .menu .left-container {
-    -fx-background-color: #008080;
+    -fx-background-color: #008040;
 }
 
 .text-field {
