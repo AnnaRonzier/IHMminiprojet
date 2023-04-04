@@ -241,30 +241,24 @@ private Stage dialogStageM;
         try {
             
             // db parameters
-           String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/Bdd.db";
+           String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
 
 
           // String url = "jdbc:sqlite:/Users/PascalineCoiffure/projetIHM/sqlite/db/chinook.db";
 
-            try {
             // create a connection to the database
             conn = DriverManager.getConnection(url);
-        }
-        catch(SQLException e) { 
-            System.out.println("Pas de connexion à la bdd");
-        }
+      
             
             System.out.println("Connection to SQLite has been established.");
              // Créer une instruction SQL pour sélectionner les colonnes de la table Etudiant
          stmt = conn.createStatement();
 
 
-        try{
+       
          rs = stmt.executeQuery("SELECT Nom, Prenom, Naissance, Parcours, Promotion FROM Etudiants");
-        }
-         catch(SQLException e) { 
-             System.out.println("Erreur recup valeurs");
-        }
+ 
+
 
 
          // Parcourir les résultats de la requête
