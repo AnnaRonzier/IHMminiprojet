@@ -1,5 +1,4 @@
 package ch.makery.address;
- 
 import java.sql.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -7,18 +6,16 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
-
 import ch.makery.address.Etudiant;
 
 /**
- * Décrivez votre classe Modifier ici.
+ * Controller to manage the Set-on panel
  *
- * @author (votre nom)
- * @version (un numéro de version ou une date)
+ * @author GroupIHM24
  */
 public class Modifier
 {
-     @FXML
+    @FXML
     private TableView<Etudiant> etudiantTable;
     @FXML
     private TextField nomField;
@@ -30,25 +27,23 @@ public class Modifier
     private TextField parcoursField;
     @FXML
     private TextField promotionField;
-    
-// Reference � la main application.
+
     private MainApp mainApp;
 
     private Stage dialogStage;
     private Etudiant etudiant;
     private boolean okClicked = false;
 
-
     /**
-     * Initialise la classe EtudiantlisteController.
-     * Cette m�thode est appel� automatiquement apr�s que le fichier fxml ait �t� charg�
+     * Initializes the StudentListController class.
+     * This method is called automatically after the fxml file has been loaded
      */
     @FXML
     private void initialize() {
     }
 
     /**
-     * Set le stage de cette fen�tre de dialogue.
+     * Set the stage of this dialog window.
      *
      * @param dialogStage
      */
@@ -57,7 +52,7 @@ public class Modifier
     }
 
     /**
-     * Sets l'�tudiant qui va �tre modifier dans la fen�tre.
+     * Sets the student that will be modified in the window.
      *
      * @param etudiant
      */
@@ -68,11 +63,11 @@ public class Modifier
         anneeDeNaissanceField.setText(Integer.toString(etudiant.getAnneeDeNaissance()));
         parcoursField.setText(etudiant.getParcours());
         promotionField.setText(etudiant.getPromotion());
-        
+
     }
 
     /**
-     * Retourne true si l'utilisateur clique sur OK, sinon elle retourne false.
+     * Returns true if the user clicks on OK, otherwise it returns false.
      *
      * @return
      */
@@ -80,55 +75,52 @@ public class Modifier
         return okClicked;
     }
 
-     /**
-     * Methode handle appel�e lorsque l'utilisateur appuie sur le bouton modifier.
-     * Elle ouvre une fen�tre de dialogue pour modifier les donn�es d'un �tudiant s�lectionn�.
+    /**
+     * Methode handle called when the user presses the edit button.
+     * It opens a dialog window to modify the data of a selected student.
      */
     @FXML
     public void handleOK() {
         Connection conn = null;
-    
-        // Fermer la fenêtre pop-up
-    dialogStage.close();
 
-            if (!isInputValid()) {
-return; // les entrées ne sont pas valides, donc ne pas exécuter la requête SQL
-}
-else {
-   
-            // Open a connection to the SQLite database
+        // Close the pop-up window
+        dialogStage.close();
+
+        if (!isInputValid()) {
+            return; // the entries are not valid, so do not execute the SQL query
+        }
+        else {
+
+            // Ouvrir une connexion à la base de données SQLite
             try  {
-                // Établir la connexion à la base de données SQLite
-        String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
- conn = DriverManager.getConnection(url);
-        
-                // Prepare an SQL UPDATE statement to update the selected student
-PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Prenom=?, Naissance=?, Parcours=?, Promotion=? WHERE nom = ? AND prenom = ?");
+                // Establish the connection to the SQLite database
+                String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
+                conn = DriverManager.getConnection(url);
+
+                // Préparer une instruction SQL UPDATE pour mettre à jour l'étudiant sélectionné
+                PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Prenom=?, Naissance=?, Parcours=?, Promotion=? WHERE nom = ? AND prenom = ?");
                 stmt.setString(1, nomField.getText());
                 stmt.setString(2, prenomField.getText());
-        stmt.setInt(3,Integer.parseInt(anneeDeNaissanceField.getText()));
-            stmt.setString(4, parcoursField.getText());
-        stmt.setString(5, promotionField.getText());
- 
-        stmt.setString(6, nomField.getText());
-        stmt.setString(7, prenomField.getText());
-     
+                stmt.setInt(3,Integer.parseInt(anneeDeNaissanceField.getText()));
+                stmt.setString(4, parcoursField.getText());
+                stmt.setString(5, promotionField.getText());
+
+                stmt.setString(6, nomField.getText());
+                stmt.setString(7, prenomField.getText());
+
                 // Execute the UPDATE statement
                 stmt.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
-          
     
-    } 
- 
+        } 
 
-}
-
+    }
 
     /**
-     * M�thode appel�e lorsque l'utilisateur clique sur Cancel.
+     * Method called when the user clicks on Cancel.
      */
     @FXML
     private void handleCancel() {
@@ -136,14 +128,13 @@ PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Preno
     }
 
     /**
-     * M�thode qui valide les donn�es entr�es dans les fields.
+     * Method that validates the data entered in the fields.
      *
-     * @return true si l'entr�e est valide
+     * @return true if the entry is valid
      */
     private boolean isInputValid() {
         String errorMessage = "";
 
-        
         if (prenomField.getText() == null || prenomField.getText().length() == 0 || (prenomField.getText().toUpperCase().matches("[A-Z]+") == false) || prenomField.getText().toUpperCase().matches(".*\\d+.*")) {
             errorMessage += "Prenom non valide!\n Il ne doit pas contenir d'accent ou de caractere speciaux \n ";
         }
@@ -154,7 +145,7 @@ PreparedStatement stmt = conn.prepareStatement("UPDATE etudiant SET Nom=?, Preno
         if (anneeDeNaissanceField.getText() == null || anneeDeNaissanceField.getText().length() == 0 || anneeDeNaissanceField.getText().length() < 4 || anneeDeNaissanceField.getText().length() > 4) {
             errorMessage += "Annee de naissance non valide!\n Il doit etre un entier a 4 chiffres \n";
         } else {
-            // Essaye de changer l'ann�e de naissance en un entier.
+            // Try to change the year of birth to an integer.
             try {
                 Integer.parseInt(anneeDeNaissanceField.getText());
             } catch (NumberFormatException e) {

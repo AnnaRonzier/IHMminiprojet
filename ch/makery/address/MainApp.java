@@ -26,179 +26,194 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import javafx.scene.control.TableView;
-
 import javafx.fxml.FXML;
-
 
 /**
  * Classe Main application
- * Elle permet de lancer l'application
+ * It allows to launch the application
  *
- * @author 
+ * @GroupIHM24
  */
 public class MainApp extends Application {
-
     private Stage primaryStage;
     private BorderPane rootLayout;
-
     EtudiantListe controllerPO;
     /**
      * Les donnees sont stockees dans differentes listes
      */
- @FXML
+    @FXML
     private TableView<Etudiant> etudiantTable;
     //liste principale
     public ObservableList<Etudiant> etudiantData = FXCollections.observableArrayList();
-        //Liste des M1
+    //Liste des M1
     private ObservableList<Etudiant> listM1 = FXCollections.observableArrayList();
     //Liste des M2
     private ObservableList<Etudiant> listM2 = FXCollections.observableArrayList();
-    
-  //Liste des GPHY
+
+    //Liste des GPHY
     private ObservableList<Etudiant> listGPHY = FXCollections.observableArrayList();
     //Liste des GCELL
     private ObservableList<Etudiant> listGCELL = FXCollections.observableArrayList();
     //Liste des ECMPS
     private ObservableList<Etudiant> listECMPS = FXCollections.observableArrayList();
 
-private Stage dialogStageM;
+    private Stage dialogStageM;
 
     /**
-     * Constructeur
+     * Constructor
      */
     public MainApp() {
 
-
     }
-    
 
     /**
-     * Methode qui retourne les donn�es du tableau en une liste observable
+     * Method that returns the data of the table in an observable list
      * @return etudiantData
      */
     public ObservableList<Etudiant> getEtudiantData() {
         return etudiantData;
     }
 
-
     /**
-     * Methode qui filtre les etudiants de la promotion ,
-     * les stocke dans une liste
-     * et retourne les donnees en une liste observable
+     * Method that filters the students in the class,
+     * stores them in a list
+     * and returns the data in an observable list
      * @return listM1
      */
     public ObservableList<Etudiant> getM1Data() {
-    ObservableList<Etudiant> listM1 = FXCollections.observableArrayList();
-    for (Etudiant p : etudiantData){
-        if(p.getPromotion().equals("M1")){
-            listM1.add(p);
+        ObservableList<Etudiant> listM1 = FXCollections.observableArrayList();
+        for (Etudiant p : etudiantData){
+            if(p.getPromotion().equals("M1")){
+                listM1.add(p);
+            }
         }
+        return listM1;
     }
-    return listM1;
-}
-
 
     /**
-     * Methode qui filtre les etudiants de la promotion ,
-     * les stocke dans une liste
-     * et retourne les donnees en une liste observable
+     * Method that filters the students in the class,
+     * stores them in a list
+     * and returns the data in an observable list
+     * @Param option1
      * @return listD
      */
     public ObservableList<Etudiant> getParcData(String option1) {
         ObservableList<Etudiant> listParc = FXCollections.observableArrayList();
-    for (Etudiant p : etudiantData){
-        if(p.getPromotion().equals(option1)){
-            listParc.add(p);
+        for (Etudiant p : etudiantData){
+            if(p.getPromotion().equals(option1)){
+                listParc.add(p);
+            }
         }
-        
+        return listParc;
     }
-    return listParc;
-    }
-  /**
-     * Methode qui filtre les etudiants de la promotion ,
-     * les stocke dans une liste
-     * et retourne les donnees en une liste observable
+
+    /**
+     * Method that filters the students in the class,
+     * stores them in a list
+     * and returns the data in an observable list
+     * @Param option2
      * @return listPromData
      */
     public ObservableList<Etudiant> getPromData(String option2) {
         ObservableList<Etudiant> listProm = FXCollections.observableArrayList();
-    for (Etudiant p : etudiantData){
-        if(p.getParcours().equals(option2)){
-            listProm.add(p);
+        for (Etudiant p : etudiantData){
+            if(p.getParcours().equals(option2)){
+                listProm.add(p);
+            }
         }
+        return listProm;
     }
-    return listProm;
-    }
-    
-public ObservableList<Etudiant> getData(String promotion, String parcours) {
-    ObservableList<Etudiant> filteredData = FXCollections.observableArrayList();
-    for (Etudiant etudiant : etudiantData) {
-        if (etudiant.getPromotion().equals(promotion) && etudiant.getParcours().equals(parcours)) {
-            filteredData.add(etudiant);
-        }
-        else if (etudiant.getPromotion().equals(promotion)) {
-            filteredData.add(etudiant);
-        }
-        else if (etudiant.getParcours().equals(parcours)) {
-            filteredData.add(etudiant);
-        }
-    }
-    return filteredData;
-}
 
+    /**
+     * This function returns an ObservableList of Etudiant objects
+     * @Param promotion, parcours
+     * @return ObservableList<Etudiant>
+     */
+    public ObservableList<Etudiant> getData(String promotion, String parcours) {
+        // Create a new ObservableList to store the filtered data.
+        ObservableList<Etudiant> filteredData = FXCollections.observableArrayList();
+        // Iterate through each Etudiant object in the etudiantData list.
+        for (Etudiant etudiant : etudiantData) {
+            // Check if the Etudiant object meets both criteria.
+            if (etudiant.getPromotion().equals(promotion) && etudiant.getParcours().equals(parcours)) {
+                filteredData.add(etudiant);
+            }
+            // Check if the Etudiant object only meets the promotion criterion.
+            else if (etudiant.getPromotion().equals(promotion)) {
+                filteredData.add(etudiant);
+            }
+            // Check if the Etudiant object only meets the parcours criterion.
+            else if (etudiant.getParcours().equals(parcours)) {
+                filteredData.add(etudiant);
+            }
+        }
+
+        // Return the filtered data.
+        return filteredData;
+    }
+    /**
+     * This function  is responsible for initializing the 
+     * user interface and showing the list of Etudiants.
+     * @Param primaryStage
+     */
 
     @Override
     public void start(Stage primaryStage) {
+        // Set the title and icon of the primary stage.
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Gestion des Etudiants IDLS");
         this.primaryStage.getIcons().add(new Image("/ressources/SFA.png"));
 
+        // Connect to the database.
         connect();
+
+        // Initialize the Acceuil view.
         initAcceuil();
 
-
+        // Show the list of Etudiants.
         showEtudiantListe();
+
     }
 
     /**
-     * Initialise le root layout.
+     * This function is responsible for initializing the Acceuil view, which is loaded from an FXML file.
      */
     public void initAcceuil() {
         try {
-            // Charge le root layout venant du fichier fxml.
+            // Load the root layout from the FXML file.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("Acceuil2.fxml"));
             rootLayout = (BorderPane) loader.load();
 
-            // Affiche la scene contenant le root layout.
+            // Set the scene to display the root layout.
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
 
-         // Donne � l'application main l'acc�s au controller.
+            // Give the main application access to the controller.
             Acceuil controller = loader.getController();
             controller.setMainApp(this);
 
+            // Show the primary stage.
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
-
     /**
-     * Affiche la liste des etudiants dans le root layout.
+     * This function is responsible for showing the list of Etudiants in the user interface.
      */
     public void showEtudiantListe() {
         try {
-
-            // Charge le fichier �tudiant liste.
+            // Load the FXML file for the EtudiantListe view.
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(MainApp.class.getResource("EtudiantListe.fxml"));
             AnchorPane etudiantListe = (AnchorPane) loader.load();
-
-            // Set etudiant liste au centre du root layout.
+            // Set the EtudiantListe view to be the center of the root layout.
             rootLayout.setCenter(etudiantListe);
 
+            // Give the main application access to the controller and the Etudiant data.
             controllerPO = loader.getController();
             controllerPO.setMainApp(this);
             controllerPO.setEtudiantData(etudiantData);
@@ -206,69 +221,65 @@ public ObservableList<Etudiant> getData(String promotion, String parcours) {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     /**
-     * Retoune le main stage.
+     * Return the main stage.
      * @return primaryStage
      */
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
- public  void connect() {
-    etudiantData.clear();
-     Connection conn = null;
-      Statement stmt = null;
-      ResultSet rs = null;
-        
+    /**
+     * This function is responsible for connecting to the SQLite database 
+     * and populating the etudiantData list with the data retrieved from the database.
+     */
+    public void connect() {
+        // Clear the etudiantData list before populating it with new data.
+        etudiantData.clear();
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
+
         try {
-            
-            // db parameters
-           String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
+            // Define the URL of the SQLite database.
+            String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/sqlite/db/chinook.db";
 
-
-            // create a connection to the database
+            // Create a connection to the database.
             conn = DriverManager.getConnection(url);
-      
-            
+
+            // Display a message indicating that the connection to the database has been established.
             System.out.println("Connection to SQLite has been established.");
-             // Créer une instruction SQL pour sélectionner les colonnes de la table Etudiant
-         stmt = conn.createStatement();
 
+            // Create an SQL statement to select the columns from the Etudiant table.
+            stmt = conn.createStatement();
 
-       
-         rs = stmt.executeQuery("SELECT Nom, Prenom, Naissance, Parcours, Promotion FROM Etudiant");
- 
+            // Execute the SQL query and obtain a result set.
+            rs = stmt.executeQuery("SELECT Nom, Prenom, Naissance, Parcours, Promotion FROM Etudiant");
 
+            // Loop through the results of the query.
+            while (rs.next()) {
+                String nom = rs.getString("Nom");
+                String prenom = rs.getString("Prenom");
+                int anneeDeNaissance = rs.getInt("Naissance");
+                String parcours = rs.getString("Parcours");
+                String promotion = rs.getString("Promotion");
 
+                // Create a new Etudiant object with the retrieved information.
+                Etudiant nouvelEtudiant = new Etudiant(nom, prenom, anneeDeNaissance, parcours, promotion);
 
-         // Parcourir les résultats de la requête
-        while (rs.next()) {
-            String nom = rs.getString("Nom");
-            String prenom = rs.getString("Prenom");
-            int anneeDeNaissance = rs.getInt("Naissance");
-            String parcours = rs.getString("Parcours");
-            String promotion = rs.getString("Promotion");
-            
-            // Créer un nouvel étudiant avec les informations récupérées
+                // Add the new Etudiant object to the etudiantData list.
+                etudiantData.add(nouvelEtudiant);
+            }
 
-
-
-        Etudiant nouvelEtudiant = new Etudiant(nom, prenom,anneeDeNaissance, parcours, promotion);
-          
-        etudiantData.add(nouvelEtudiant);
-     
-
-        }
-
-
-        
-            // Exécuter la requête SQL et obtenir un objet
         } catch (SQLException e) {
+            // If an exception occurs, display the error message.
             System.out.println(e.getMessage());
         } finally {
             try {
+                // Close the connection to the database.
                 if (conn != null) {
                     conn.close();
                 }
@@ -276,90 +287,88 @@ public ObservableList<Etudiant> getData(String promotion, String parcours) {
                 System.out.println(ex.getMessage());
             }
         }
-        
-    }
 
+    }
     /**
-     * Ouvre une fenetre de dialogue pour editer les donnees pour un etudiant selectionner
-     * Si l'utilisateur clique sur OK, le changement sera sauvegarder dans l'objet etudiant fourni
-     * Le booleen true est retroune.
+     * Opens a dialog window to edit the data for a selected Student
+     * If the user clicks OK the change will be saved to the provided student object
+     * The true boolean is found.
      *
-     * @param etudiant l'objet etudiant qui doit etre edite
-     * @return true si l'utilisateur clique sur OK sinon il retourne false.
+     * @param student the student object to be edited
+     * @return true if the user clicks OK otherwise it returns false.
      */
     public boolean showAjouterDialog(Etudiant etudiant) {
 
         try {
-   
-            // Charge le fichier fxml et cr�� un nouveau stage pour la fen�tre de dialogue popup.
+
+            // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-    
+
             loader.setLocation(MainApp.class.getResource("Ajouter2.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
-            // Cr�� la fen�tre de dialogue Stage.
+            // Created the Stage dialog box.
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Editer Etudiant");
             dialogStage.initModality(Modality.WINDOW_MODAL);
             dialogStage.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStage.setScene(scene);
-            // Set l'etudiant dans le controller.
+            // Set the student in the controller.
             Ajouter controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setEtudiant(etudiant);
-            // Affiche la fen�tre de dialogue et attends jusqu'� ce que l'utilisateur la ferme.
+            // Displays the dialog box and waits until the user closes it.
             dialogStage.showAndWait();
-   
+
             return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
     }
-/**
-     * Ouvre une fenetre de dialogue pour editer les donnees pour un etudiant selectionner
-     * Si l'utilisateur clique sur OK, le changement sera sauvegarder dans l'objet etudiant fourni
-     * Le booleen true est retroune.
+
+    /**
+     * Opens a dialog window to edit the data for a selected Student
+     * If the user clicks OK the change will be saved to the provided student object
+     * The true boolean is found.
      *
-     * @param etudiant l'objet etudiant qui doit etre edite
-     * @return true si l'utilisateur clique sur OK sinon il retourne false.
+     * @param student the student object to be edited
+     * @return true if the user clicks OK otherwise it returns false.
      */
     public boolean showAjouterDialogModif(Etudiant etudiant) {
         try {
-    
-            // Charge le fichier fxml et cr�� un nouveau stage pour la fen�tre de dialogue popup.
+
+            // Load the fxml file and create a new stage for the popup dialog.
             FXMLLoader loader = new FXMLLoader();
-    
+
             loader.setLocation(MainApp.class.getResource("Modifier.fxml"));
             AnchorPane page = (AnchorPane) loader.load();
-            // Cr�� la fen�tre de dialogue Stage.
+            // Created the Stage dialog box.
             Stage dialogStageM= new Stage();
             dialogStageM.setTitle("Editer Etudiant");
             dialogStageM.initModality(Modality.WINDOW_MODAL);
             dialogStageM.initOwner(primaryStage);
             Scene scene = new Scene(page);
             dialogStageM.setScene(scene);
-            // Set l'etudiant dans le controller.
+            // Set the student in the controller.
             Modifier controller = loader.getController();
             controller.setDialogStage(dialogStageM);
             controller.setEtudiant(etudiant);
-            // Affiche la fen�tre de dialogue et attends jusqu'� ce que l'utilisateur la ferme.
+            // Displays the dialog box and waits until the user closes it.
             dialogStageM.showAndWait();
             return controller.isOkClicked();
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
-       
     }
- 
 
     /**
-     * Methode permettant de changer les donnees du tableau par une liste donnee
-     * @param liste
+     * Method to change the data of the table by a given list
+     * @param list
      */
     public void changeData(ObservableList<Etudiant> liste){
         controllerPO.changeData(liste);
     }
-   
+
 }

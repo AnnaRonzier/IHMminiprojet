@@ -7,16 +7,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 /**
- * Controller pour gerer le panneau de visualisation
+ * Controller to manage the visualization panel
  *
- * @author 
+ * @author GroupIHM24
  */
 public class Acceuil {
 
-    // Reference � mainApp.
+    // Reference to mainApp.
     private MainApp mainApp;
 
-    //Table des etudiants
+    //Students' table
     @FXML
     private TableView<Etudiant> personTable;
     @FXML
@@ -24,32 +24,28 @@ public class Acceuil {
     @FXML
     private TableColumn<Etudiant, Integer>  anneeDeNaissanceColumn;
 
-    //id de l'item list dans le menu
+    // Id of the list item in the menu
     @FXML private Menu listMenu;
 
-
     /**
-     * Methode appelant la mainApp
-     *
+     * Method calling the mainApp
      * @param mainApp
      */
     public void setMainApp(MainApp mainApp) {
         this.mainApp = mainApp;
-
     }
 
     /**
-     * Initialise la classe EtudiantlisteController.
-     * Cette methode est appele automatiquement apres que le fichier fxml ait ete charge
+     * Initialize the StudentListController class.
+     * This method is called automatically after the fxml file is loaded
      */
     @FXML
     private void initialize() {
     }
 
-  
     /**
-     * Methode handle appelee lorsque l'utilisateur appuie sur l'item Liste > Tous.
-     * Elle permet de mettre � jour le tableau en affichant tous les etudiants enregistres.
+     * Method handle called when the user presses the List > All item.
+     * It allows to update the table with all the registered students.
      */
     @FXML
     private void handleListeTous() {
@@ -57,8 +53,8 @@ public class Acceuil {
     }
 
     /**
-     * Methode handle appelee lorsque l'utilisateur appuie sur l'item Liste > M1.
-     * Elle permet de mettre � jour le tableau en affichant tous les etudiants enregistres faisant partie de la promotion M1.
+     * Method handle called when the user presses the List > M1 item.
+     * It allows to update the table by displaying all the registered students who are part of the M1 class.
      */
     @FXML
     private void handleListeM1() {
@@ -67,8 +63,8 @@ public class Acceuil {
     }
 
     /**
-     * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > M2.
-     * Elle permet de mettre � jour le tableau en affichant tous les �tudiants enregistr�s faisant partie de la promotion M2.
+     * Methode handle called when the user presses the List > M2 item.
+     * It allows to update the table by displaying all the registered students who are part of the M2 class.
      */
     @FXML
     private void handleListeM2() {
@@ -76,28 +72,29 @@ public class Acceuil {
         mainApp.changeData(mainApp.getData(promotion, null));
     }
 
-
     /**
-     * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > GPHY.
-     * Elle permet de mettre � jour le tableau en affichant tous les �tudiants enregistr�s faisant partie du parcours GPHY.
+     * Methode handle called when the user presses the List > GPHY item.
+     * It allows to update the table by displaying all the registered students who are part of the GPHY pathway.
      */
     @FXML
     private void handleListeGPHY() {
         String parcours = "GPHY";
         mainApp.changeData(mainApp.getData(null, parcours));
     }
+
     /**
-     * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > GCELL.
-     * Elle permet de mettre � jour le tableau en affichant tous les �tudiants enregistr�s faisant partie du parcours GCELL.
+     * Methode handle called when the user presses the List > GCELL item.
+     * It allows to update the table by displaying all the registered students who are part of the GCELL pathway.
      */
     @FXML
     private void handleListeGCELL() {
         String parcours = "GCELL";
         mainApp.changeData(mainApp.getData(null, parcours));
     }
+
     /**
-     * Methode handle appel�e lorsque l'utilisateur appuie sur l'item Liste > ECMPS.
-     * Elle permet de mettre � jour le tableau en affichant tous les �tudiants enregistr�s faisant partie du parcours ECMPS.
+     * Methode handle called when the user presses the List > ECMPS item.
+     * It allows to update the table by displaying all the registered students who are part of the ECMPS pathway.
      */
     @FXML
     private void handleListeECMPS() {

@@ -1,16 +1,13 @@
 package ch.makery.address;
-
-
-
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
- * Classe Etudiant
+ * Class Student
  *
- * @author 
+ * @author GroupIHM24
  */
 public class Etudiant {
 
@@ -21,14 +18,14 @@ public class Etudiant {
     private final StringProperty promotion;
 
     /**
-     * Constructeur par d�faut.
+     * Constructor
      */
     public Etudiant() {
         this(null, null, 0, null, null);
     }
 
     /**
-     * Constructeur avec param�tres.
+     * Constructor with parameters.
      *
      * @param parcours
      * @param prenom
@@ -42,29 +39,27 @@ public class Etudiant {
         this.anneeDeNaissance = new SimpleIntegerProperty(anneeDeNaissance);
         this.parcours = new SimpleStringProperty(parcours);
         this.promotion = new SimpleStringProperty(promotion);
-        
     }
 
     /**
-     * Getter du prenom de l'etudiant
-     * @return String prenom
+     * Getter of student's name
+     * @return String nom
      */
     public String getPrenom() {
         return prenom.get();
     }
 
     /**
-     * Setter du prenom de l'etudiant
-     * @param prenom
+     * Setter of student's name
+     * @param nom
      */
     public void setPrenom(String prenom) {
-    this.prenom.set(prenom);
-   
+        this.prenom.set(prenom);
+
     }
 
-
     /**
-     * Getter de la propriete du prenom
+     * Getter of the property of the name
      * @return StringProperty prenom
      */
     public StringProperty prenomProperty() {
@@ -72,15 +67,15 @@ public class Etudiant {
     }
 
     /**
-     * Getter du nom de l'�tudiant
-     * @return String nom
+     * Getter of the student's name
+     * @return String name
      */
     public String getNom() {
         return nom.get();
     }
 
     /**
-     * Setter du nom de l'�tudiant
+     * Setter of the student's name
      * @param nom
      */
     public void setNom(String nom) {
@@ -88,7 +83,7 @@ public class Etudiant {
     }
 
     /**
-     * Getter de la propri�t� du nom de l'�tudiant
+     * Getter of the student's name property
      * @return StringProperty nom
      */
     public StringProperty nomProperty() {
@@ -96,7 +91,7 @@ public class Etudiant {
     }
 
     /**
-     * Getter de l'ann�e de naissance de l'�tudiant
+     * Getter of the student's year of birth
      * @return int anneeDeNaissance
      */
     public int getAnneeDeNaissance() {
@@ -104,7 +99,7 @@ public class Etudiant {
     }
 
     /**
-     * Setter de l'ann�e de naissance de l'�tudiant
+     * Setter of the student's year of birth
      * @param anneeDeNaissance
      */
     public void setAnneeDeNaissance(Integer anneeDeNaissance) {
@@ -112,7 +107,7 @@ public class Etudiant {
     }
 
     /**
-     * Getter de la propri�t� de l'ann�e de naissance de l'�tudiant
+     * Getter of the student's year of birth property
      * @return IntegerProperty anneeDeNaissance
      */
     public IntegerProperty anneeDeNaissanceProperty() {
@@ -120,7 +115,7 @@ public class Etudiant {
     }
 
     /**
-     * Getter de la promotion de l'�tudiant
+     * Getter of the student's promotion
      * @return String promotion
      */
     public String getPromotion() {
@@ -128,7 +123,7 @@ public class Etudiant {
     }
 
     /**
-     * Setter de la promotion de l'�tudiant
+     * Setter of the student's class
      * @param promotion
      */
     public void setPromotion(String promotion) {
@@ -136,7 +131,7 @@ public class Etudiant {
     }
 
     /**
-     * Getter de la propri�t� de  la promotion de l'�tudiant
+     * Getter of the student's class property
      * @return StringProperty promotion
      */
     public StringProperty promotionProperty() {
@@ -144,7 +139,7 @@ public class Etudiant {
     }
 
     /**
-     * Getter de la parcours de l'�tudiant
+     * Getter of the student's background
      * @return String parcours
      */
     public String getParcours() {
@@ -152,7 +147,7 @@ public class Etudiant {
     }
 
     /**
-     * Setter de la parcours de l'�tudiant
+     * Setter of the student's course
      * @param promotion
      */
     public void setParcours(String parcours) {
@@ -160,7 +155,7 @@ public class Etudiant {
     }
 
     /**
-     * Getter de la propri�t� du parcours de l'�tudiant
+     * Getter of the student's course property
      * @return StringPropertyparcours
      */
     public StringProperty parcoursProperty() {
